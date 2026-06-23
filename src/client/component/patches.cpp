@@ -193,6 +193,26 @@ namespace patches
 			sv_shutdown_hook.invoke<void>(finalmsg);
 		}
 
+		utils::hook::detour sv_find_reconnect_slot_hook;
+
+		// Never let a remote connection reuse the host's loopback slot (Win11 listen-server fix)
+		char sv_find_reconnect_slot_stub(void* session, game::netadr_s* from)
+		{
+			const auto slot = sv_find_reconnect_slot_hook.invoke<char>(session, from);
+			if (slot >= 0 && slot < *game::mp::svs_numclients)
+			{
+				const auto& client = game::mp::svs_clients[slot];
+				if (client.header.state != 0
+					&& client.header.netchan.remoteAddress.type == game::NA_LOOPBACK
+					&& from->type != game::NA_LOOPBACK)
+				{
+					return -1;
+				}
+			}
+
+			return slot;
+		}
+
 		void com_quit_f_stub()
 		{
 			console::info("quitting...\n");
@@ -331,6 +351,9 @@ namespace patches
 
 			com_quit_f_hook.create(0x1403D08C0, com_quit_f_stub);
 			sv_shutdown_hook.create(0x140440170, sv_shutdown_stub);
+
+			// Fix Win11 listen-server self-disconnect on 2nd-player-join
+			sv_find_reconnect_slot_hook.create(game::SV_FindReconnectSlotByAddress, sv_find_reconnect_slot_stub);
 		}
 
 		static void patch_sp()

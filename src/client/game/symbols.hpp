@@ -186,6 +186,7 @@ namespace game
 	WEAK symbol<void(mp::gentity_s*)> SV_AddEntity{0, 0x1403388B0};
 
 	WEAK symbol<void(netadr_s* from)> SV_DirectConnect{0, 0x1404397A0};
+	WEAK symbol<char(void* session, netadr_s* from)> SV_FindReconnectSlotByAddress{0, 0x140222B20};
 	WEAK symbol<void(mp::client_t* client)> SV_DropClient{0, 0x140438A30};
 	WEAK symbol<void(mp::client_t*, const char*, int)> SV_ExecuteClientCommand{0, 0x15121D8E6};
 	WEAK symbol<void(int localClientNum)> SV_FastRestart{0, 0x1404374E0};
