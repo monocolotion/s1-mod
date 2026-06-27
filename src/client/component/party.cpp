@@ -234,6 +234,36 @@ namespace party
 		return sv_maxclients;
 	}
 
+	std::string get_public_server_name()
+	{
+		// In menu, or we're the host of a listen server (not a remote dedicated server).
+		if (!game::CL_IsCgameInitialized() || game::SV_Loaded())
+		{
+			return {};
+		}
+
+		// Unreachable/private addresses are not public dedicated servers.
+		if (!network::is_valid_public_ip(connect_state.host))
+		{
+			return {};
+		}
+
+		const auto* host_name = reinterpret_cast<const char*>(0x141646CC4);
+		const std::string raw(host_name, strnlen(host_name, 256));
+
+		// A private match advertises the host's player name as the server name.
+		const auto* name_dvar = game::Dvar_FindVar("name");
+		if (name_dvar && raw == name_dvar->current.string)
+		{
+			return {};
+		}
+
+		std::string stripped(raw.size() + 1, '\0');
+		utils::string::strip(raw.data(), stripped.data(), stripped.size());
+		stripped.resize(std::strlen(stripped.data()));
+		return stripped;
+	}
+
 	void start_map(const std::string& map_name)
 	{
 		if (game::Live_SyncOnlineDataFlags(0) > 32)
