@@ -181,6 +181,12 @@ namespace discord
 		// True once the engine has reached the menu and online data is synced (safe to connect).
 		bool join_ready()
 		{
+			// SP can't join MP sessions.
+			if (game::environment::is_sp())
+			{
+				return false;
+			}
+
 			return game_initialized.load() && game::Live_SyncOnlineDataFlags(0) == 0;
 		}
 
@@ -390,6 +396,15 @@ namespace discord
 		if (!state.in_game)
 		{
 			return state; // menu => empty map
+		}
+
+		// SP: UI_Get*DisplayName and the MP players global don't exist in the SP binary.
+		if (game::environment::is_sp())
+		{
+			const auto* sp_map = game::Dvar_FindVar("mapname");
+			state.mapname = sp_map && sp_map->current.string ? sp_map->current.string : std::string{};
+			state.map_display = truncate(strip_colors(state.mapname), 128);
+			return state;
 		}
 
 		const auto* mapname_dvar = game::Dvar_FindVar("ui_mapname");
