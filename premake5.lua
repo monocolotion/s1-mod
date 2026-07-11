@@ -322,6 +322,10 @@ end
 
 dependencies.imports()
 
+filter "action:vs*"
+	buildoptions {"/utf-8"} -- C4819: Chinese/CJK characters in 汉化 source files
+filter {}
+
 project "tlsdll"
 kind "SharedLib"
 language "C++"
