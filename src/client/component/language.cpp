@@ -5,6 +5,8 @@
 #include "console.hpp"
 #include "scheduler.hpp"
 #include "game/game.hpp"
+#include "command.hpp"
+#include "component/gsc/script_loading.hpp"
 
 #include <utils/io.hpp>
 
@@ -14,6 +16,7 @@ namespace language
 	{
 		lang current_language = lang::english;
 		std::unordered_map<std::string, std::string> translations_cache;
+		std::unordered_set<std::string> g_untranslated;
 
 		void load_language_from_config()
 		{
@@ -101,12 +104,16 @@ namespace language
 		// LUI Engine.Localize() may read these assets through a different path
 		// (e.g. SL_ConvertToString) that bypasses SEH_StringEd_GetString entirely.
 		// By patching the assets themselves we cover ALL lookup paths.
+		//
+		// Stable storage that outlives patch_localize_assets() calls.
+		// Asset value pointers point INTO this vector, so it must be persistent.
+		static std::vector<std::string> lentry_stable_strings;
+		static std::unordered_set<std::string> lentry_patched;
+
 		void patch_localize_assets()
 		{
 			if (current_language != lang::schinese) return;
 
-			std::vector<std::string> stable_strings;
-			stable_strings.reserve(translations_cache.size());
 			size_t patched = 0;
 
 			struct PatchCtx
@@ -114,7 +121,8 @@ namespace language
 				decltype(&translations_cache) cache;
 				size_t* counter;
 				std::vector<std::string>* stable;
-			} ctx = { &translations_cache, &patched, &stable_strings };
+				std::unordered_set<std::string>* seen;
+			} ctx = { &translations_cache, &patched, &lentry_stable_strings, &lentry_patched };
 
 			game::DB_EnumXAssets_FastFile(game::ASSET_TYPE_LOCALIZE_ENTRY,
 				[](game::XAssetHeader header, void* data)
@@ -125,15 +133,24 @@ namespace language
 				auto* entry = static_cast<LocalizeEntry*>(header.data);
 				if (!entry || !entry->name || !entry->value) return;
 
+				// Skip if already patched on a previous call
+				if (ctx->seen->contains(entry->name)) return;
+
 				const auto it = ctx->cache->find(entry->name);
 				if (it == ctx->cache->end()) return;
 
 				ctx->stable->push_back(it->second);
 				entry->value = ctx->stable->back().c_str();
+				ctx->seen->insert(entry->name);
 				(*ctx->counter)++;
 			}, &ctx, false);
 
-			console::info("language: Patched %zu LocalizeEntry assets with schinese translations\n", patched);
+			if (patched > 0)
+			{
+				console::info("language: Patched %zu new LocalizeEntry assets "
+					"(%zu total stable strings)\n",
+					patched, lentry_stable_strings.size());
+			}
 		}
 	}
 
@@ -179,8 +196,183 @@ namespace language
 			load_language_from_config();
 			load_translations_cache();
 
-			// Apply translations IMMEDIATELY for SEH_StringEd_GetString path
 			apply_translations();
+			patch_localize_assets();
+
+			scheduler::on_game_initialized([]()
+			{
+				patch_localize_assets();
+			}, scheduler::pipeline::main);
+
+			// Batch-export all collected untranslated strings to JSON
+			command::add("dumpuntranslated", [](const command::params& params)
+			{
+				const char* filename = "data/untranslated.json";
+				if (params.size() >= 2)
+					filename = params[1];
+
+				console::info("Dumping %zu untranslated strings to %s ...\n",
+					g_untranslated.size(), filename);
+
+				std::string json = "{\n  \"untranslated\": [\n";
+				bool first = true;
+				for (const auto& s : g_untranslated)
+				{
+					if (!first) json += ",\n";
+					first = false;
+					json += "    \"";
+					for (char c : s)
+					{
+						switch (c) {
+						case '"': json += "\\\""; break;
+						case '\\': json += "\\\\"; break;
+						case '\n': json += "\\n"; break;
+						case '\r': json += "\\r"; break;
+						case '\t': json += "\\t"; break;
+						default: json += c;
+						}
+					}
+					json += "\"";
+				}
+				json += "\n  ]\n}\n";
+
+				utils::io::write_file(filename, json, false);
+				console::info("Dumped %zu untranslated strings to %s\n",
+					g_untranslated.size(), filename);
+			});
+
+			// Dump all StringTable assets (scr_string_t hash->string mappings)
+			// from loaded fastfiles.
+			command::add("dumpstringtable", [](const command::params& params)
+			{
+				const char* filename = "data/stringtables.json";
+				if (params.size() >= 2)
+					filename = params[1];
+
+				struct DumpCtx
+				{
+					std::string* json;
+					int total_strings;
+					int table_count;
+					bool first_table;
+				};
+
+				console::info("Dumping string tables to %s ...\n", filename);
+
+				std::string json = "{";
+				DumpCtx ctx = { &json, 0, 0, true };
+
+				game::DB_EnumXAssets_FastFile(game::ASSET_TYPE_STRINGTABLE,
+					[](game::XAssetHeader header, void* data)
+				{
+					auto* ctx_ = static_cast<DumpCtx*>(data);
+					auto* table = header.stringTable;
+					if (!table || !table->name || !table->values) return;
+
+					const int entry_count = table->columnCount * table->rowCount;
+					if (entry_count <= 0) return;
+
+					if (!ctx_->first_table)
+						ctx_->json->append(",\n");
+					ctx_->first_table = false;
+					ctx_->table_count++;
+
+					ctx_->json->append("  \"");
+					for (const char* p = table->name; *p; p++)
+					{
+						switch (*p) {
+						case '"': ctx_->json->append("\\\""); break;
+						case '\\': ctx_->json->append("\\\\"); break;
+						default: ctx_->json->push_back(*p);
+						}
+					}
+					ctx_->json->append("\": [\n");
+
+					bool first_entry = true;
+					for (int i = 0; i < entry_count; i++)
+					{
+						const char* s = table->values[i].string;
+						if (!s || !s[0]) continue;
+
+						if (!first_entry) ctx_->json->append(",\n");
+						first_entry = false;
+
+						ctx_->json->append("    {\"h\": ");
+						ctx_->json->append(std::to_string(table->values[i].hash));
+						ctx_->json->append(", \"s\": \"");
+						for (const char* p = s; *p; p++)
+						{
+							switch (*p) {
+							case '"': ctx_->json->append("\\\""); break;
+							case '\\': ctx_->json->append("\\\\"); break;
+							case '\n': ctx_->json->append("\\n"); break;
+							case '\r': ctx_->json->append("\\r"); break;
+							case '\t': ctx_->json->append("\\t"); break;
+							default: ctx_->json->push_back(*p);
+							}
+						}
+						ctx_->json->append("\"}");
+						ctx_->total_strings++;
+					}
+					ctx_->json->append("\n  ]");
+				}, &ctx, false);
+
+				json += "\n}\n";
+
+				utils::io::write_file(filename, json, false);
+				console::info("Dumped %d string tables (%d strings) to %s\n",
+					ctx.table_count, ctx.total_strings, filename);
+			});
+
+			// Dump all GSC script token strings from the gsc-tool token table.
+			command::add("dumpgscstrings", [](const command::params& params)
+			{
+				const char* filename = "data/gsc_tokens.json";
+				if (params.size() >= 2)
+					filename = params[1];
+
+				if (!gsc::gsc_ctx)
+				{
+					console::error("gsc_ctx is not initialized\n");
+					return;
+				}
+
+				console::info("Dumping GSC token strings to %s ...\n", filename);
+
+				constexpr unsigned int max_id = 0xA7DC;
+				std::string json = "{\n  \"tokens\": [\n";
+				bool first = true;
+				int count = 0;
+
+				for (unsigned int i = 0; i <= max_id; i++)
+				{
+					auto name = gsc::gsc_ctx->token_name(i);
+					if (name.starts_with("_id_"))
+						continue;
+
+					if (!first) json += ",\n";
+					first = false;
+					count++;
+
+					json += "    {\"h\": ";
+					json += std::to_string(i);
+					json += ", \"s\": \"";
+					for (char c : name)
+					{
+						switch (c) {
+						case '"': json += "\\\""; break;
+						case '\\': json += "\\\\"; break;
+						default: json.push_back(c);
+						}
+					}
+					json += "\"}";
+				}
+
+				json += "\n  ]\n}\n";
+
+				utils::io::write_file(filename, json, false);
+				console::info("Dumped %d GSC tokens to %s\n", count, filename);
+			});
 		}
 	};
 }

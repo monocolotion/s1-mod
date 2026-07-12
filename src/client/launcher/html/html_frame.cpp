@@ -280,7 +280,13 @@ bool html_frame::load_html(const std::string& html) const
 	VARIANT* variant = nullptr;
 	if (FAILED(SafeArrayAccessData(safe_array, reinterpret_cast<void**>(&variant))) || !variant) return false;
 
-	std::wstring wide_html(html.begin(), html.end());
+	// Convert UTF-8 HTML to UTF-16 (BSTR). The naive char→wchar_t
+	// widening only works for ASCII; Chinese multi-byte sequences need
+	// proper MultiByteToWideChar with CP_UTF8.
+	const auto utf8_len = static_cast<int>(html.size());
+	const auto wide_len = MultiByteToWideChar(CP_UTF8, 0, html.data(), utf8_len, nullptr, 0);
+	std::wstring wide_html(wide_len, L'\0');
+	MultiByteToWideChar(CP_UTF8, 0, html.data(), utf8_len, wide_html.data(), wide_len);
 
 	variant->vt = VT_BSTR;
 	variant->bstrVal = SysAllocString(wide_html.data());

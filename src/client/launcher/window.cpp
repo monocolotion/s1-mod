@@ -21,7 +21,7 @@ window::window()
 	this->wc_.hIconSm = this->wc_.hIcon;
 	this->wc_.hbrBackground = HBRUSH(COLOR_WINDOW);
 	this->wc_.lpszClassName = this->classname_.data();
-	RegisterClassEx(&this->wc_);
+	RegisterClassExA(&this->wc_);
 }
 
 void window::create(const std::string& title, const int width, const int height, const long flags)
@@ -43,7 +43,7 @@ void window::create(const std::string& title, const int width, const int height,
 window::~window()
 {
 	this->close();
-	UnregisterClass(this->wc_.lpszClassName, this->wc_.hInstance);
+	UnregisterClassA(this->wc_.lpszClassName, this->wc_.hInstance);
 }
 
 void window::close()

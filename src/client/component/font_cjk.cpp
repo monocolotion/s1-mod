@@ -506,7 +506,7 @@ namespace font_cjk
 			inject_cjk_glyphs_into_font(font);
 
 			static int cc = 0; cc++;
-			if (cc <= 5 || cc % 500 == 0)
+			if (cc <= 5 || cc % 5000 == 0)
 			{
 				bool has_cjk = false;
 				for (const char* s = text; *s; s++)

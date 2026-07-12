@@ -70,7 +70,7 @@ HRESULT doc_host_ui_handler::ResizeBorder(LPCRECT /*prcBorder*/, IOleInPlaceUIWi
 	return S_OK;
 }
 
-HRESULT doc_host_ui_handler::TranslateAcceleratorA(LPMSG /*lpMsg*/, const GUID* pguidCmdGroup, DWORD /*nCmdID*/)
+HRESULT doc_host_ui_handler::TranslateAccelerator(LPMSG /*lpMsg*/, const GUID* pguidCmdGroup, DWORD /*nCmdID*/)
 {
 	pguidCmdGroup = nullptr;
 	return S_FALSE;

@@ -76,7 +76,7 @@ HRESULT ole_in_place_frame::EnableModeless(BOOL /*fEnable*/)
 	return S_OK;
 }
 
-HRESULT ole_in_place_frame::TranslateAcceleratorA(LPMSG /*lpmsg*/, WORD /*wID*/)
+HRESULT ole_in_place_frame::TranslateAccelerator(LPMSG /*lpmsg*/, WORD /*wID*/)
 {
 	return E_NOTIMPL;
 }
