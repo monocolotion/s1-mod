@@ -1,0 +1,7 @@
+{
+  "LUA_SP_COMMON_FLIGHT_CONTROLS": "Flight Controls",
+  "LUA_SP_COMMON_FLIGHT_CONTROLS_OPTIONS": "You can invert your flight pitch controls in the options menu.",
+  "LUA_SP_COMMON_FLIGHT_PITCH_INVERSION": "FLIGHT PITCH INVERSION",
+  "LUA_SP_COMMON_REVERSE_FLIGHT_CONTROLS": "Keep your controls like this?",
+  "LUA_SP_COMMON_TEST_STRING": "This is a test string for SP Common."
+}

@@ -2,6 +2,7 @@
 #include "loader/component_loader.hpp"
 #include "font_cjk.hpp"
 #include "language.hpp"
+//#include "d3d11_overlay.hpp"
 #include "scheduler.hpp"
 #include "game/game.hpp"
 #include "console.hpp"
@@ -83,7 +84,6 @@ namespace font_cjk
 		{
 			auto* r = image_setup_hook.invoke<char*>(image, a, b, c, d, e, f, name, g);
 
-			if (name && is_font_atlas_image(name))
 			{
 				console::info("font_cjk: Image_Setup font atlas: '%s' fmt=%d ready=%d\n",
 					name, (int)f, ready ? 1 : 0);
@@ -281,6 +281,49 @@ namespace font_cjk
 			return u;
 		}
 
+
+		// Substitute [{+...}] placeholders in translated Chinese text with
+		// resolved key names from the original English text.
+		std::string resolve_key_placeholders(const char* english, const char* chinese)
+		{
+			std::vector<std::string> eng_keys;
+			for (const char* p = english; *p; )
+			{
+				if (p[0] == '^' && p[1] >= '0' && p[1] <= '9')
+				{
+					p += 2;
+					const char* start = p;
+					while (*p && *p != '^') p++;
+					if (p > start)
+						eng_keys.push_back(std::string(start, p - start));
+				}
+				else { p++; }
+			}
+			std::string out;
+			int key_idx = 0;
+			const char* q = chinese;
+			while (*q)
+			{
+				if (q[0] == '^' && q[1] >= '0' && q[1] <= '9')
+				{
+					out.push_back(*q++);
+					out.push_back(*q++);
+				}
+				else if (q[0] == '[' && q[1] == '{' && q[2] == '+')
+				{
+					const char* end = strstr(q, "}]");
+					if (end && key_idx < (int)eng_keys.size())
+					{
+						out += eng_keys[key_idx];
+						key_idx++;
+						q = end + 2;
+					}
+					else { out.push_back(*q++); }
+				}
+				else { out.push_back(*q++); }
+			}
+			return out;
+		}
 		void inject_cjk_glyphs_into_font(game::Font_s* font)
 		{
 			if (!font || !font->glyphs || cjk_glyphs.empty()) return;
@@ -361,6 +404,7 @@ namespace font_cjk
 				ID3D11Device* device = nullptr;
 				font_img->textures.___u0.map->GetDevice(&device);
 				if (!device) return;
+//				d3d11_overlay::init_from_device(device);
 
 				D3D11_TEXTURE2D_DESC desc{};
 				desc.Width = ATLAS_W; desc.Height = ATLAS_H;
@@ -505,8 +549,32 @@ namespace font_cjk
 
 			inject_cjk_glyphs_into_font(font);
 
+			// Translate English text to Chinese at the render level.
+			// Catches strings that bypass SEH/SL_ConvertToString hooks
+			// (e.g., GSC literals stored directly in level.doorhintstrings).
+			// Skip if already CJK to avoid double-translation overhead.
+			bool already_cjk = false;
+			for (const char* s = text; *s && !already_cjk; s++)
+				if (*(const unsigned char*)s >= 0x80) already_cjk = true;
+			if (!already_cjk)
+			{
+				const char* translated = language::get_translation_by_english(text);
+				if (translated)
+				{
+					static thread_local std::string resolved_buf;
+					resolved_buf = resolve_key_placeholders(text, translated);
+					static int rdr_log = 0;
+					if (rdr_log < 30)
+					{
+						rdr_log++;
+						console::info("font_cjk: R_AddCmdDrawText translate '%s' -> '%s'\n",
+							text, resolved_buf.c_str());
+					}
+					text = resolved_buf.c_str();
+				}
+			}
 			static int cc = 0; cc++;
-			if (cc <= 5 || cc % 5000 == 0)
+			if (cc <= 5)
 			{
 				bool has_cjk = false;
 				for (const char* s = text; *s; s++)
@@ -528,6 +596,7 @@ namespace font_cjk
 			float x, float y, float x_scale, float y_scale, float rotation, const float* color,
 			int style, int cursor_pos, char something)
 		{
+
 			if (!ready) init_after_game_load();
 
 			if (!ready || !text || !*text || !cjk_atlas_srv)
@@ -537,6 +606,8 @@ namespace font_cjk
 				return;
 			}
 			inject_cjk_glyphs_into_font(font);
+
+
 			r_add_cmd_draw_text_with_cursor_hook.invoke<void>(text, max_chars, font,
 				x, y, x_scale, y_scale,
 				rotation, color, style, cursor_pos, something);
@@ -544,6 +615,20 @@ namespace font_cjk
 	}
 
 	bool is_cjk_available() { return ready; }
+
+	// Accessors for D3D11 overlay text rendering
+	ID3D11ShaderResourceView* get_cjk_atlas_srv() { return cjk_atlas_srv; }
+	int get_cjk_atlas_size() { return ATLAS_W; }
+	const void* get_cjk_glyphs_data() { return cjk_glyphs.data(); }
+	int get_cjk_glyph_count() { return (int)cjk_glyphs.size(); }
+	float get_cjk_font_size() { return FONT_SIZE; }
+	int find_glyph(unsigned short codepoint)
+	{
+		for (int i = 0; i < (int)cjk_glyphs.size(); i++)
+			if (cjk_glyphs[i].letter == codepoint) return i;
+		return -1;
+	}
+
 	bool baked = false;
 
 	class component final : public component_interface

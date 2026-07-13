@@ -3,6 +3,7 @@
 #include "localized_strings.hpp"
 #include "game/game.hpp"
 #include "font_cjk.hpp"
+#include "language.hpp"
 #include "console.hpp"
 #include "command.hpp"
 #include <utils/hook.hpp>
@@ -34,6 +35,18 @@ namespace localized_strings
 				const auto entry = map.find(reference);
 				if (entry != map.end())
 				{
+
+						// Diagnostic: log VIDSUBTITLES lookups
+						if (reference && strstr(reference, "VIDSUBTITLES"))
+						{
+							static int vid_log_count = 0;
+							if (vid_log_count < 50)
+							{
+								vid_log_count++;
+								console::info("SEH: VIDSUBTITLES lookup %s -> %s\n",
+									reference, entry->second.c_str());
+							}
+						}
 					// If CJK font atlas isn't ready yet, fall back to English for CJK
 					// strings. Without this the original font atlas (no CJK glyphs) would
 					// render every Chinese character as "...". The brief English display
@@ -82,7 +95,22 @@ namespace localized_strings
 					return result;
 				}
 
-				return seh_string_ed_get_string_hook.invoke<const char*>(reference);
+				// Diagnostic: log ALL VID/CINE/SUBTITLE lookups (even misses)
+			// to determine if Bink cutscene subtitles go through SEH_StringEd_GetString
+			if (reference && (strstr(reference, "VID") || strstr(reference, "CINE")))
+			{
+				static int miss_log = 0;
+				if (miss_log < 100)
+				{
+					miss_log++;
+					console::info("SEH: MISS '%s' (not in overrides, calling original)\n", reference);
+				}
+			}
+			// Fallback: try sl_reverse (GSC display strings with key bindings)
+			const char* rev = language::get_translation_by_english(reference);
+			if (rev) return rev;
+
+			return seh_string_ed_get_string_hook.invoke<const char*>(reference);
 			});
 		}
 	}
@@ -93,7 +121,6 @@ namespace localized_strings
 		{
 			map[key] = value;
 		});
-		console::info("localized_strings: override('%s', '%s')\n", key.data(), value.data());
 	}
 
 	const char* lookup(const std::string& key)
@@ -109,6 +136,71 @@ namespace localized_strings
 		});
 	}
 
+	// Scr_GetString hook: intercepts GSC stack string resolution.
+	// When a GSC built-in (e.g. sethintstring) receives a VAR_ISTRING
+	// (&"..." localized reference), Scr_GetString resolves it through
+	// a code path that bypasses SEH_StringEd_GetString. This hook
+	// catches those resolutions and returns the Chinese translation.
+	utils::hook::detour scr_get_string_hook;
+
+	const char* scr_get_string_stub(unsigned int index)
+	{
+		// Only intercept VAR_ISTRING (&"..." GSC references), not
+		// regular strings. Intercepting regular strings breaks internal
+		// game functions (persistent data, etc.) that pass raw strings
+		// which may happen to match translation key names.
+		bool is_istring = false;
+		if (index < game::scr_VmPub->outparamcount)
+		{
+			auto* value = &game::scr_VmPub->top[-static_cast<int>(index)];
+			if (value->type == 0x3) // VAR_ISTRING
+				is_istring = true;
+		}
+
+		const char* original = scr_get_string_hook.invoke<const char*>(index);
+
+		if (is_istring && original && original[0])
+		{
+			// Log all VAR_ISTRING resolutions to understand the path
+			static int scrlog = 0;
+			if (scrlog < 200)
+			{
+				scrlog++;
+				console::info("localized_strings: Scr_GetString[ISTRING](%u) -> '%s'\n",
+					index, original);
+			}
+
+			const char* translated = localized_overrides.access<const char*>(
+				[&](const localized_map& map) -> const char*
+			{
+				const auto entry = map.find(original);
+				if (entry != map.end())
+				{
+					if (!font_cjk::is_cjk_available())
+					{
+						bool has_cjk = false;
+						for (const char* s = entry->second.data(); *s; s++)
+							if (static_cast<unsigned char>(*s) >= 0x80)
+								{ has_cjk = true; break; }
+						if (has_cjk) return nullptr;
+					}
+					static int matchlog = 0;
+					if (matchlog < 50)
+					{
+						matchlog++;
+						console::info("localized_strings: Scr_GetString MATCH '%s' -> '%s'\n",
+							original, entry->second.c_str());
+					}
+					return entry->second.c_str();
+				}
+				return nullptr;
+			});
+			if (translated) return translated;
+		}
+
+		return original;
+	}
+
 	class component final : public component_interface
 	{
 	public:
@@ -117,6 +209,12 @@ namespace localized_strings
 			// Change some localized strings
 			seh_string_ed_get_string_hook.create(SELECT_VALUE(0x140339CF0, 0x140474FC0), &seh_string_ed_get_string);
 			console::info("localized_strings: Hooked SEH_StringEd_GetString\n");
+
+			// Scr_GetString hook is DISABLED — it interferes with internal
+			// game functions (persistent data, etc.). Instead we override
+			// the sethintstring GSC method via script_extension.
+			// scr_get_string_hook.create(SELECT_VALUE(0x14031C570, 0x1403F8C50), &scr_get_string_stub);
+			// console::info("localized_strings: Hooked Scr_GetString\n");
 
 			// Console command to dump all original localized strings from loaded fastfiles
 			command::add("dumplocalized", [](const command::params& params)

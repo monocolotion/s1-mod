@@ -7,6 +7,7 @@
 #include "command.hpp"
 
 #include "localized_strings.hpp"
+#include "language.hpp"
 #include "console.hpp"
 #include "game_module.hpp"
 #include "fps.hpp"

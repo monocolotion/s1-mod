@@ -55,20 +55,19 @@ killcamvalid_stub( victim, attacker, dokillcam )
 
 	return false;
 }
-
 gethintstring_translated( var_0 )
 {
-	if ( isdefined( var_0.script_flag ) && isdefined( var_0.script_index ) )
-	{
-		var_1 = level.doorhintstrings[var_0.script_flag];
-		if ( isdefined( var_1 ) && isdefined( var_1[var_0.script_index] ) )
-		{
-			str = var_1[var_0.script_index];
-			translated = gettranslatedstring_gsc( str );
-			if ( isdefined( translated ) )
-				return translated;
-			return str;
-		}
-	}
-	return &"ZOMBIES_DOOR_BUY";
+    if ( isdefined( var_0.script_flag ) && isdefined( var_0.script_index ) )
+    {
+        var_1 = level.doorhintstrings[var_0.script_flag];
+        if ( isdefined( var_1 ) && isdefined( var_1[var_0.script_index] ) )
+        {
+            str = var_1[var_0.script_index];
+            translated = gettranslatedstring_gsc( str );
+            if ( isdefined( translated ) )
+                return translated;
+            return str;
+        }
+    }
+    return &"ZOMBIES_DOOR_BUY";
 }

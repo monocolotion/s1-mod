@@ -1,0 +1,21 @@
+{
+  "LUA_MENU_STATS": "[NEED_EN] 统计",
+  "LUA_MENU_STATS_DESC": "[NEED_EN] 编辑玩家统计数据设置。",
+  "LUA_MENU_UNLOCKALL_ITEMS": "[NEED_EN] 解锁全部物品",
+  "LUA_MENU_UNLOCKALL_ITEMS_DESC": "[NEED_EN] 解锁因玩家等级限制的物品。",
+  "LUA_MENU_UNLOCKALL_LOOT": "[NEED_EN] 解锁全部战利品",
+  "LUA_MENU_UNLOCKALL_LOOT_DESC": "[NEED_EN] 解锁补给箱战利品。",
+  "LUA_MENU_UNLOCKALL_CLASSES": "[NEED_EN] 解锁全部兵种",
+  "LUA_MENU_UNLOCKALL_CLASSES_DESC": "[NEED_EN] 解锁额外兵种槽位。",
+  "LUA_MENU_PRESTIGE_DESC": "[NEED_EN] 编辑转生等级。",
+  "LUA_MENU_RANK": "RANK",
+  "LUA_MENU_RANK_DESC": "[NEED_EN] 编辑等级。",
+  "LUA_MENU_FPS": "[NEED_EN] 帧数显示",
+  "LUA_MENU_FPS_DESC": "[NEED_EN] 显示帧数计数器",
+  "LUA_MENU_LATENCY": "[NEED_EN] 服务器延迟",
+  "LUA_MENU_LATENCY_DESC": "[NEED_EN] 显示服务器延迟",
+  "LUA_MENU_SERVERLIST": "LAN PARTY",
+  "LUA_MENU_SERVERLIST_DESC": "[NEED_EN] 浏览可用服务器。",
+  "LUA_MENU_COMBAT": "[NEED_EN] 战斗训练",
+  "LUA_MENU_COMBAT_DESC": "[NEED_EN] 与机器人离线升级。"
+}

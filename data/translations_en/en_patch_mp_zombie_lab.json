@@ -1,0 +1,8 @@
+{
+  "ZOMBIE_LAB_DOOR_TO_ADMIN": "Hold ^3[{+activate}]^7 To Open ^3Administration^7",
+  "ZOMBIE_LAB_DOOR_TO_COURTYARD": "Hold ^3[{+activate}]^7 To Open ^3Courtyard^7",
+  "ZOMBIE_LAB_DOOR_TO_EXPER": "Hold ^3[{+activate}]^7 To Open ^3Exo Testing^7",
+  "ZOMBIE_LAB_DOOR_TO_LAB": "Hold ^3[{+activate}]^7 To Open ^3Morgue^7",
+  "ZOMBIE_LAB_DOOR_TO_MILITARY": "Hold ^3[{+activate}]^7 To Open ^3Holding^7",
+  "ZOMBIE_LAB_DOOR_TO_ROUNDABOUT": "Hold ^3[{+activate}]^7 To Open ^3Main Hub^7"
+}

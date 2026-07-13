@@ -1,0 +1,9 @@
+{
+  "MP_DETROIT_DESTROYED_TRAMTURRET": "Destroyed Tram Turret!",
+  "MP_DETROIT_MAP_KILLSTREAK": "Tram Turret",
+  "MP_DETROIT_MAP_KILLSTREAK_AUTOPILOT": "Auto Pilot",
+  "MP_DETROIT_MAP_KILLSTREAK_DESC": "Control tram mounted turret",
+  "MP_DETROIT_MAP_KILLSTREAK_NOT_AVAILABLE": "Tram Turret Not Available",
+  "MP_DETROIT_MAP_KILLSTREAK_PICKUP": "Press and hold ^3[{+activate}]^7 for Tram Turret",
+  "MP_DETROIT_MAP_KILLSTREAK_PLAYER_PILOT": "Control Enabled"
+}

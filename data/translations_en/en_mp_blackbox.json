@@ -1,0 +1,18 @@
+{
+  "GRAPPLE_INPUT_CEILING_GAMEPAD": "\u0010 Rappel   ^3[{+stance}]^7 Detach",
+  "GRAPPLE_INPUT_CEILING_PC": "^3[{+back}]^7 Rappel   ^3[{+togglecrouch}]^7 Detach",
+  "GRAPPLE_INPUT_TUTORIAL": "^3[{+smoke}]^7 Grapple",
+  "GRAPPLE_INPUT_WALL_GAMEPAD": "\u0010 Rappel   ^3[{+gostand}]^7 Jump   ^3[{+stance}]^7 Detach",
+  "GRAPPLE_INPUT_WALL_PC": "^3[{+back}]^7 Rappel   ^3[{+gostand}]^7 Jump   ^3[{+togglecrouch}]^7 Detach",
+  "GRAPPLE_INVALID_SURFACE": "Invalid Surface",
+  "GRAPPLE_KILL": "^3[{+smoke}]^7 Grapple Kill",
+  "GRAPPLE_KILL_PULL": "^3[{+smoke}]^7 Concealed Kill",
+  "GRAPPLE_NO_FOOTING": "No Footing",
+  "GRAPPLE_NO_SPACE": "No Space",
+  "GRAPPLE_TAPPY_HINT": "Tap ^3[{+activate}]^7 repeatedly",
+  "GRAPPLE_TOO_CLOSE": "[NEED_EN] 距离太近",
+  "GRAPPLE_TOO_FAR": "Too Far",
+  "GRAPPLE_TOO_SHARP": "Angle Too Sharp",
+  "GRAPPLE_ZOOM_HINT": "^3[{+speed_throw}]^7 Zoom",
+  "MP_BLACKBOX_MAP_KILLSTREAK_PICKUP": "Press and hold ^3[{+activate}]^7 for Super Serum"
+}

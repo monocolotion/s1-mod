@@ -1,0 +1,6 @@
+{
+  "MP_SPARK_MAP_KILLSTREAK": "[NEED_EN] 高级斥力炮塔",
+  "MP_SPARK_MAP_KILLSTREAK_DESC": "Turret that generates a cone of radiation.",
+  "MP_SPARK_MAP_KILLSTREAK_MAX": "Too many Advanced Repulsion Turrets in the area.",
+  "MP_SPARK_MAP_KILLSTREAK_PICKUP": "[NEED_EN] 按住 ^3[{+activate}]^7 获取高级斥力炮塔"
+}

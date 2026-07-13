@@ -20,4 +20,8 @@ namespace language
 
 	// Try both forward (key) and reverse (English) lookups
 	const char* get_translation_any(const std::string& str);
+
+	// Diagnostic: true when a Bink video is actively playing frames
+	bool is_bink_playing();
+
 }

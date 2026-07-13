@@ -464,7 +464,6 @@ namespace gsc
 				game::Scr_AddInt(utils::io::remove_file(converted_path));
 			});
 
-
 			add_function("gettranslatedstring_gsc", []
 			{
 				if (game::Scr_GetNumParam() < 1)
@@ -472,8 +471,29 @@ namespace gsc
 				const char* str = game::Scr_GetString(0);
 				const char* translated = language::get_translation_any(str);
 				if (translated)
+				{
+					static int hit_log = 0;
+					if (hit_log < 30)
+					{
+						hit_log++;
+						console::info("gsc_translate: HIT #%d '%s' -> '%s'\n",
+							hit_log, str, translated);
+					}
 					game::Scr_AddString(translated);
+				}
+				else
+				{
+					static int miss_log = 0;
+					if (miss_log < 30)
+					{
+						miss_log++;
+						console::info("gsc_translate: MISS #%d '%s'\n",
+							miss_log, str);
+					}
+				}
 			});
+
+
 			utils::hook::set<std::uint32_t>(SELECT_VALUE(0x1403115BC, 0x1403EDAEC), 0x1000); // Scr_RegisterFunction
 
 			utils::hook::set<std::uint32_t>(SELECT_VALUE(0x1403115C2 + 4, 0x1403EDAF2 + 4), RVA(&func_table)); // Scr_RegisterFunction

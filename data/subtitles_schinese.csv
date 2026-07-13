@@ -1,0 +1,555 @@
+AUDIO_LOG_IRS_01,0,2.2,^2Irons: ^7没有一个父亲应该失去自己的儿子。
+AUDIO_LOG_IRS_01,2.5,4.6,^2Irons: ^7这违背了自然规律。
+AUDIO_LOG_IRS_01,4.9,8.1,^2Irons: ^7没有儿子，就没有未来。我一生都在
+AUDIO_LOG_IRS_01,8.2,12.3,"^2Irons: ^7fighting stupidity and cowardice for a better world, where good people "
+AUDIO_LOG_IRS_01,12.4,16.1,^2Irons: ^7能够无忧无虑地繁荣发展。我知道代价，
+AUDIO_LOG_IRS_01,16.2,21,^2Irons: ^7我每天都看到它，我接受它。但我无法接受这个。
+AUDIO_LOG_IRS_01,21.1,25.3,^2Irons: ^7威尔的悲剧不能白费。我会确保这一点。
+AUDIO_LOG_IRS_01,26.3,28,^2Irons: ^7This is not where it ends. This is where it begins. 
+AUDIO_LOG_IRS_02,0,3.2,^2Irons: ^7我今天去看望了米切尔。吉迪恩正在狠揍他，
+AUDIO_LOG_IRS_02,3.3,6.5,^2Irons: ^7但他会到位的。他头脑清醒，
+AUDIO_LOG_IRS_02,6.6,11.5,^2Irons: ^7有着和威尔一样的决心。我明白他们为什么那么要好了。
+AUDIO_LOG_IRS_02,11.6,15.6,"^2Irons: ^7The Marines, in their infinite wisdom, deemed him unfit for duty. "
+AUDIO_LOG_IRS_02,15.7,19.2,"^2Irons: ^7\Can't fight with one arm.\"" Never tell a soldier what he can't do."""
+AUDIO_LOG_IRS_02,19.3,22.4,^2Irons: ^7如果有人值得第二次机会，那就是像米切尔这样的人。
+AUDIO_LOG_IRS_02,22.5,27.2,^2Irons: ^7Give me an army of men like him and there's nothing Atlas can't do. 
+AUDIO_LOG_IRS_03,0,4.3,^2Irons: ^7拉各斯——如果有什么政府无能的更好例子，我还没见过。
+AUDIO_LOG_IRS_03,4.4,8.1,^2Irons: ^7KVA走进来就像这是他们的地盘一样，就像他们有权
+AUDIO_LOG_IRS_03,8.2,12.2,^2Irons: ^7拿走任何他们想要的东西。无可奈何，官员们来找我。
+AUDIO_LOG_IRS_03,12.3,17.3,^2Irons: ^7他们震惊了，几个装备精良的人就能让一个如此伟大，
+AUDIO_LOG_IRS_03,18.3,22.2,^2Irons: ^7如此强大的国家屈服。他们问，他们是怎样的人？
+AUDIO_LOG_IRS_03,22.3,25.9,^2Irons: ^7我告诉他们，他们只是愿意不惜一切代价
+AUDIO_LOG_IRS_03,26,30,^2Irons: ^7来实现目标的人。没有感情，没有偏见。
+AUDIO_LOG_IRS_03,30.1,35,"^2Irons: ^7Once you understand this most basic of facts, you have everything you need. "
+AUDIO_LOG_IRS_04,0,3.8,^2Irons: ^7地面核电站自诞生以来一直是
+AUDIO_LOG_IRS_04,3.9,8.1,^2Irons: ^7since their inception. In 2048 Atlas submitted a lengthy report 
+AUDIO_LOG_IRS_04,8.2,10.6,^2Irons: ^7to The Defense Department on the security risks. 
+AUDIO_LOG_IRS_04,10.7,14,^2Irons: ^7我猜他们不喜欢那些发现，因为他们把报告压了下来。
+AUDIO_LOG_IRS_04,14.1,16.9,^2Irons: ^7I think they gave us the security contract just to shut us up. 
+AUDIO_LOG_IRS_04,17,20.1,^2Irons: ^7但那不是接受这份工作的原因。
+AUDIO_LOG_IRS_04,20.2,24.1,^2Irons: ^7我接这份合同是因为阿特拉斯能给纳税人
+AUDIO_LOG_IRS_04,24.2,29.9,"^2Irons: ^7the best return on their buck. We spent millions on concrete reinforcements, "
+AUDIO_LOG_IRS_04,30,33.9,^2Irons: ^7我们建造了防空系统，但我们最大的成就是？
+AUDIO_LOG_IRS_04,34,38.8,^2Irons: ^7消除人为错误。你可以把你的防御建得
+AUDIO_LOG_IRS_04,38.9,43.4,^2Irons: ^7尽可能坚固，但人类始终是任何系统中最薄弱的环节。
+AUDIO_LOG_IRS_04,43.5,47.6,^2Irons: ^7当攻击真的来临时——我毫不怀疑它会来——
+AUDIO_LOG_IRS_04,47.7,54.2,^2Irons: ^7记住我的话，那一定是因为有人没锁门。
+AUDIO_LOG_IRS_04,54.3,57.3,^2Irons: ^7You can't protect what you can't control. 
+AUDIO_LOG_IRS_05,0,4.5,^2Irons: ^7领导者领导。成败取决于我们做出的选择。
+AUDIO_LOG_IRS_05,4.6,8.8,^2Irons: ^7抓捕达诺瓦博士并将他绳之以法将是在追捕哈迪斯的过程中
+AUDIO_LOG_IRS_05,8.9,12.2,^2Irons: ^7迈出的决定性一步。但如果我们可以利用他来防止
+AUDIO_LOG_IRS_05,12.3,16.3,^2Irons: ^7未来的反人类罪行，那么起诉这个人的罪行
+AUDIO_LOG_IRS_05,16.4,20,"^2Irons: ^7future crimes against humanity? Hundreds, maybe thousands, "
+AUDIO_LOG_IRS_05,20.1,24.5,^2Irons: ^7人死在了这个人的实验下，但如果这些成果
+AUDIO_LOG_IRS_05,24.6,29,^2Irons: ^7could one day benefit humanity and save lives? Is it wrong 
+AUDIO_LOG_IRS_05,29.1,33.1,^2Irons: ^7利用这些知识，不管它是如何获得的，这有错吗？
+AUDIO_LOG_IRS_05,33.2,37.4,^2Irons: ^7尊重死者是天经地义的。
+AUDIO_LOG_IRS_05,37.5,40.2,^2Irons: ^7honor them than to give the meaning to their demise? 
+AUDIO_LOG_IRS_05,40.3,44.3,^2Irons: ^7科学数据存在于任何道德框架之外。
+AUDIO_LOG_IRS_05,44.4,49.3,^2Irons: ^7它是一种可以用于好或坏的资源，选择在我们手中。
+AUDIO_LOG_IRS_05,49.4,52.9,^2Irons: ^7但如果选择什么都不做，那就根本不是选择。
+AUDIO_LOG_IRS_05,53,57.1,^2Irons: ^7It is to accept that innocent people died for nothing. 
+AUDIO_LOG_IRS_06,0,5,^2Irons: ^7A mission of this scale is a serious endeavor in the best of circumstances. 
+AUDIO_LOG_IRS_06,5.1,8.3,"^2Irons: ^7Operating in the middle of a busy tourist destination is, "
+AUDIO_LOG_IRS_06,8.4,15.2,^2Irons: ^7毫无疑问是极端冒险的。但风险正是我们成功的关键。
+AUDIO_LOG_IRS_06,15.3,20.2,^2Irons: ^7哈迪斯赌的是我们的人性。没有任何政府能承受
+AUDIO_LOG_IRS_06,20.3,24.2,^2Irons: ^7数百名无辜游客在一次失败任务中被杀的公众抗议。
+AUDIO_LOG_IRS_06,24.3,29.9,^2Irons: ^7哈迪斯知道这一点。但我们不是政府，我们的权力并非来自
+AUDIO_LOG_IRS_06,30,33.7,^2Irons: ^7民众授权。政府本可以阻止我们，
+AUDIO_LOG_IRS_06,33.8,38.5,"^2Irons: ^7the United Nations could've stopped us, but they didn't. Why? "
+AUDIO_LOG_IRS_06,38.6,44,^2Irons: ^7Because they think I've stepped into my own trap. They've seen what Atlas can do 
+AUDIO_LOG_IRS_06,44.1,48,^2Irons: ^7他们知道阿特拉斯已经变得多么强大。他们害怕了，
+AUDIO_LOG_IRS_06,48.1,52.8,^2Irons: ^7他们更怕我而不是怕哈迪斯。KVA在逃，
+AUDIO_LOG_IRS_06,52.9,57.5,^2Irons: ^7还有谁留下来打乱他们的现状？他们看着我们，而不是
+AUDIO_LOG_IRS_06,57.6,62.2,^2Irons: ^7看到我们的成功，他们看到的是一个威胁。一个太强大而无法控制，
+AUDIO_LOG_IRS_06,62.3,65.9,^2Irons: ^7太强大而无法阻止的人，所以他们赌我们会失败。
+AUDIO_LOG_IRS_06,66,71.4,^2Irons: ^7他们害怕是对的。对我们来说，失败不是选项。
+AUDIO_LOG_IRS_06,71.5,76.7,^2Irons: ^7只要我们提着哈迪斯的头回来，就没人想阻止我们。
+AUDIO_LOG_IRS_06,76.8,78.4,^2Irons: ^7They'll want to follow us. 
+AUDIO_LOG_IRS_07,0,4.3,^2Irons: ^7If you want to sell people on your vision - show them. 
+AUDIO_LOG_IRS_07,4.4,8.3,^2Irons: ^7他们把世界的这一部分称为文明的摇篮。
+AUDIO_LOG_IRS_07,8.4,12.6,^2Irons: ^7一万年来，它一直是贸易和文化的中心。
+AUDIO_LOG_IRS_07,12.7,19,^2Irons: ^7国王、哈里发、独裁者和暴君的家园。我看到的关于战争的
+AUDIO_LOG_IRS_07,19.1,23.7,^2Irons: ^7第一张画面就来自这个地方。二十年内两场战争，
+AUDIO_LOG_IRS_07,23.8,28.7,^2Irons: ^7却没什么可展示的。我看到了如果不有效进行，
+AUDIO_LOG_IRS_07,28.8,33.8,^2Irons: ^7战争会如何迅速变成泥潭。如果有哪个地方代表了
+AUDIO_LOG_IRS_07,33.9,38.1,^2Irons: ^7治理的彻底失败，那就是巴格达。当我们的领导者
+AUDIO_LOG_IRS_07,38.2,44.8,^2Irons: ^7把这个地方留给它的命运时，我抓住这个机会来掌握我们的命运。
+AUDIO_LOG_IRS_07,44.9,49.9,"^2Irons: ^7Fifty years of rot, and we rebuilt it in five. "
+AUDIO_LOG_IRS_07,50,54.2,^2Irons: ^7如今新巴格达不仅仅是一座繁荣的城市，
+AUDIO_LOG_IRS_07,54.3,57.8,^2Irons: ^7it's a symbol of what's to come. 
+AUDIO_LOG_IRS_08,0,5,^2Irons: ^7在这样的日子里，很难记得进步是什么样子的。
+AUDIO_LOG_IRS_08,5.1,11.1,^2Irons: ^7数十亿美元，多年的研究。人体不是一台
+AUDIO_LOG_IRS_08,11.2,16.7,^2Irons: ^7我们可以随便重组的机器。组织损伤需要时间愈合，
+AUDIO_LOG_IRS_08,16.8,24.6,^2Irons: ^7细胞需要时间生长。我们是凡人，时间从来不是我们的朋友。
+AUDIO_LOG_IRS_08,24.7,28.2,^2Irons: ^7我们已经成功加速了生长过程，但细胞在
+AUDIO_LOG_IRS_08,28.3,31.9,^2Irons: ^7一段时间后无法自我维持。
+AUDIO_LOG_IRS_08,32,37,^2Irons: ^7尽管如此，达诺瓦仍然是一个有价值的资产。
+AUDIO_LOG_IRS_08,37.1,40.6,"^2Irons: ^7Without Danois, Manticore would have died at the developmental stage. "
+AUDIO_LOG_IRS_09,0,5.4,^2Irons: ^7不忠。没有比这更大的罪行了，没有足够严厉的惩罚。
+AUDIO_LOG_IRS_09,5.5,9.2,"^2Irons: ^7They must have recruited Mitchell. I saw something in him, "
+AUDIO_LOG_IRS_09,9.3,15,^2Irons: ^7一些在一个人身上罕见的东西。一个领导者，或许有点像我。
+AUDIO_LOG_IRS_09,15.1,18.7,^2Irons: ^7一个能盲目追随却又能独立思考的人。
+AUDIO_LOG_IRS_09,18.8,23.6,^2Irons: ^7威尔不得不独自闯荡。不忠？我曾这么认为，
+AUDIO_LOG_IRS_09,23.7,27.4,^2Irons: ^7但也许我错了。我愿意相信威尔
+AUDIO_LOG_IRS_09,27.5,29.9,"^2Irons: ^7back into the fold, given time. "
+AUDIO_LOG_IRS_10,0,4.3,^2Irons: ^7蝴蝶若要诞生，毛毛虫必须死去。
+AUDIO_LOG_IRS_10,4.4,8.9,^2Irons: ^7在某个时刻，毛毛虫的DNA中被触发了'意象细胞'。
+AUDIO_LOG_IRS_10,9,15.7,^2Irons: ^7这些细胞保持休眠，但一旦被激活，它们就像癌症一样，
+AUDIO_LOG_IRS_10,15.8,19.8,^2Irons: ^7猛烈攻击健康细胞。癌变细胞生长，
+AUDIO_LOG_IRS_10,19.9,22.7,^2Irons: ^7毛毛虫最终被摧毁，
+AUDIO_LOG_IRS_10,22.8,27.7,^2Irons: ^7但癌变细胞成为新生命形式的基础，
+AUDIO_LOG_IRS_10,27.8,35.5,^2Irons: ^7一只蝴蝶；于是循环继续。如此残酷而又如此美丽。
+AUDIO_LOG_IRS_10,35.6,40.2,^2Irons: ^7我们最大的进步同样可能导致我们的毁灭。
+AUDIO_LOG_IRS_10,40.3,45.5,^2Irons: ^7曼提柯尔是岔路口。一条路通向死亡，
+AUDIO_LOG_IRS_10,45.6,50.5,^2Irons: ^7一种前所未有的更强大的武器。另一条，通向生命，
+AUDIO_LOG_IRS_10,50.6,58.5,^2Irons: ^7the regeneration of human cells. The conquest of death itself. Immortality. 
+AUDIO_LOG_IRS_11,0,4.6,^2Irons: ^7你可以把任何东西变成武器，只需要想象力。
+AUDIO_LOG_IRS_11,4.7,9.6,^2Irons: ^7一些最成功的军事行动之所以成功，仅仅是因为
+AUDIO_LOG_IRS_11,9.7,15.1,^2Irons: ^7没有人想过那是可能的。如果你计划消灭
+AUDIO_LOG_IRS_11,15.2,19.3,^2Irons: ^7这个星球上最强大的海军力量，就别想在开阔水域上做。
+AUDIO_LOG_IRS_11,19.4,24.8,^2Irons: ^7从海洋深处发动攻击，或者在它有机会
+AUDIO_LOG_IRS_11,24.9,30.3,^2Irons: ^7离港之前攻击。通过把桥塌在舰队上，我将实现两个目标。
+AUDIO_LOG_IRS_11,30.4,35.6,^2Irons: ^7第一个是战略性的：瘫痪美国第三舰队。第二个：象征性的。
+AUDIO_LOG_IRS_11,35.7,41.3,^2Irons: ^7一个多世纪以来，金门大桥一直是美国技术
+AUDIO_LOG_IRS_11,41.4,45.9,^2Irons: ^7创新和力量的象征。摧毁一个强大的力量象征，
+AUDIO_LOG_IRS_11,46,50.4,^2Irons: ^7and you turn it into an even more powerful symbol of weakness. 
+AUDIO_LOG_IRS_11,50.5,56.8,"^2Irons: ^7Make an adversary feel weak, and they will become weak. "
+AUDIO_LOG_IRS_12,0,4.5,^2Irons: ^7A cowardly act of terrorism? Who the hell are they kidding? 
+AUDIO_LOG_IRS_12,4.6,9,^2Irons: ^7我以一支小型公司的高度熟练和高积极性特种部队，
+AUDIO_LOG_IRS_12,9.1,14.6,^2Irons: ^7对抗了有史以来航行海洋的最大海军舰队，
+AUDIO_LOG_IRS_12,14.7,20.7,^2Irons: ^7而且赢了！他们可以用一千种不同的方式来歪曲，但画面
+AUDIO_LOG_IRS_12,20.8,26.2,^2Irons: ^7不言自明。懦弱？不，我坚持我的行动。
+AUDIO_LOG_IRS_12,26.3,32.3,^2Irons: ^7恐怖主义？毫无疑问。如果你的行为没有在你敌人的心中
+AUDIO_LOG_IRS_12,32.4,37.4,^2Irons: ^7激起恐惧和恐怖，那你就没有资格发动战争。
+AUDIO_LOG_IRS_13,0,4.5,^2Irons: ^7袭击如我预测的那样发生了。迫使他们做出反应，
+AUDIO_LOG_IRS_13,4.6,9.3,^2Irons: ^7他们反应愚蠢，因为他们别无他法。
+AUDIO_LOG_IRS_13,9.4,13.1,"^2Irons: ^7An affront to their power is an affront to their very existence, "
+AUDIO_LOG_IRS_13,13.2,17,^2Irons: ^7但他们的力量、威力和决心的展示只会暴露
+AUDIO_LOG_IRS_13,17.1,22.3,^2Irons: ^7their complete impotence. Power? They have no real power! 
+AUDIO_LOG_IRS_13,22.4,28.4,^2Irons: ^7他们有宣传，他们有资源。他们有委员会和预算，
+AUDIO_LOG_IRS_13,28.5,35.4,^2Irons: ^7投票和否决权，提案和暂缓修正案。全是废物。
+AUDIO_LOG_IRS_13,35.5,41.7,^2Irons: ^7明天，如果我们还能醒来，我们将迎来新的黎明。
+AUDIO_LOG_IRS_13,41.8,44.7,^2Irons: ^7And that's when the real work will begin. 
+AUDIO_LOG_IRS_14,0,6.4,^2Irons: ^7这一刻已经酝酿了多年。数十亿美元，
+AUDIO_LOG_IRS_14,6.5,11.3,"^2Irons: ^7the years of research, the setbacks and scientific breakthroughs. "
+AUDIO_LOG_IRS_14,11.4,16.8,"^2Irons: ^7Many doubted that this day would come, but it has arrived. "
+AUDIO_LOG_IRS_14,16.9,22.7,^2Irons: ^7精灵已经出瓶，曼提柯尔超出了所有预期，
+AUDIO_LOG_IRS_14,22.8,28.5,^2Irons: ^7表现完美。即使现在，亲眼所见，
+AUDIO_LOG_IRS_14,28.6,33.9,^2Irons: ^7仍感觉像一个奇迹。我走着，毫发无伤，
+AUDIO_LOG_IRS_14,34,39.2,^2Irons: ^7而数百名敌军倒在我周围，
+AUDIO_LOG_IRS_14,39.3,44.9,^2Irons: ^7在他们战斗的战场上阵亡。每个人都有独特的DNA，
+AUDIO_LOG_IRS_14,45,53.8,^2Irons: ^7一个只有他独有的密码，正如每个人的命运都是他独有的一样。
+AUDIO_LOG_IRS_14,53.9,59.9,^2Irons: ^7谁控制了曼提柯尔，谁就控制了人类的命运。
+AUDIO_LOG_IRS_14,60,65.2,^2Irons: ^7Nothing and nobody can stand in our way. 
+AUDIO_LOG_IRS_15,0,4,^2Irons: ^7敌人就在我们门口，但我们永远不会让他们获胜。
+AUDIO_LOG_IRS_15,4.1,8.7,^2Irons: ^7我所开创的事业将继续下去，无论我是否在世。
+AUDIO_LOG_IRS_15,8.8,16.1,^2Irons: ^7我只是一个变革的推动者，引导我们走向共同的命运。
+AUDIO_LOG_IRS_15,16.2,20.4,^2Irons: ^7我们的子孙将活着看到恐怖、饥荒、
+AUDIO_LOG_IRS_15,20.5,27.9,^2Irons: ^7压迫和暴力的终结。一个所有必需品都会得到供应的世界，
+AUDIO_LOG_IRS_15,28,33.6,^2Irons: ^7一个摆脱了政府暴政、人为差异
+AUDIO_LOG_IRS_15,33.7,40.2,^2Irons: ^7and false beliefs. A world united under one flag. 
+betrayal_load,6.5,9.9,^2Mitchell: ^7哈迪斯的死给我们带来的问题多于答案。
+betrayal_load,10,12.3,^2Mitchell: ^7但重要的是他走了。
+betrayal_load,12.4,14.6,^2Mitchell: ^7这是我们所有人的
+betrayal_load,14.7,16.5,^2Mitchell: ^7新篇章的开始。
+betrayal_load,17.1,20.5,^2Reporter: ^7终于，约瑟夫·奇赫伊泽的期限到了——
+betrayal_load,20.6,24.5,"^2Reporter: ^7better known as \Hades\"" - leader of the KVA and mastermind"""
+betrayal_load,24.6,27.6,^2Reporter: ^7四年前毁灭性袭击的幕后策划者。
+betrayal_load,28.3,33.7,^2Reporter: ^7我们最近采访了乔纳森·艾恩斯，阿特拉斯国际的创始人兼首席执行官，
+betrayal_load,33.8,39,"^2Reporter: ^7the private military corporation responsible for hunting down and killing \Hades\""."""
+betrayal_load,39.4,43.3,^2Reporter: ^7恭喜您，您实现了没有哪个政府能够做到的事。
+betrayal_load,43.6,46.4,^2Irons: ^7谢谢你，温迪，但今天真正的英雄是阿特拉斯的男女员工们。
+betrayal_load,46.5,49,^2Irons: ^7我为他们在本周取得的成就感到无比自豪。
+betrayal_load,49.3,52.9,^2Reporter: ^7有传言说联合国将提供给安理会一个席位。
+betrayal_load,53.2,56.1,^2Reporter: ^7政治生涯还会远吗？
+betrayal_load,57.2,61.4,^2Irons: ^7嗯，我喜欢把事情做成，所以，不远。
+betrayal_load,61.5,63.3,^2Irons: ^7但看看我们在新巴格达所做的事。
+betrayal_load,63.4,66.1,^2Irons: ^7四十年前我们撤离伊拉克时那个地方一片废墟，
+betrayal_load,66.2,67.7,^2Irons: ^7我们灰溜溜地夹着尾巴。
+betrayal_load,67.8,70.3,^2Irons: ^7而现在它证明了
+betrayal_load,70.4,73.1,^2Irons: ^7when you put efficiency before bureaucracy. 
+betrayal_load,73.2,75.7,^2Reporter: ^7过去四年对您来说是巨大的。
+betrayal_load,75.8,77.6,^2Reporter: ^7在KVA袭击之后，
+betrayal_load,77.7,80.6,^2Reporter: ^7阿特拉斯已经成为世界上最大的企业。
+betrayal_load,80.7,86,^2Reporter: ^7And you now preside over the world's largest standing military. 
+betrayal_load,86.2,89.5,^2Reporter: ^7那么乔纳森·艾恩斯的下一步是什么？
+captured_load,1.5,6.4,^2Mitchell: ^7我多次欺骗了死神——和它近距离接触过。
+captured_load,6.5,7.9,"^2Mitchell: ^7It was never something I welcomed, "
+captured_load,8,13.1,"^2Mitchell: ^7but with it comes serenity, a clarity that you'd never expect. "
+captured_load,13.6,16.7,^2Mitchell: ^7你将当下体验为你走向它的
+captured_load,16.8,19.6,^2Mitchell: ^7每一步的必然终点……
+captured_load,19.7,24.4,^2Mitchell: ^7而在同一时刻，你看到一条不同的道路在你面前延伸。
+captured_load,24.6,28.5,^2Mitchell: ^7那条你在第一步时本可以走的路。
+captured_load,29.9,32,^2Mitchell: ^7We are all on this road together. 
+captured_load,32.1,36,^2Mitchell: ^7那些为错误事业而战的好人……
+captured_load,36.1,39.9,^2Mitchell: ^7以及那些以正义自居的腐败者。
+captured_load,40.5,45.9,^2Mitchell: ^7他们每个人都相信自己站在天使一边。
+captured_load,46.6,48.7,^2Mitchell: ^7但每段旅程都有终点……
+captured_load,48.8,52.2,^2Mitchell: ^7而死亡只能被欺骗那么久……
+captured_load,52.4,57,^2Mitchell: ^7我们用尽了一切办法对付阿特拉斯，但都失败了。
+captured_load,57.5,60.5,^2Mitchell: ^7Now it was time to pay the price. 
+coop_outro,3.8,7,^2Gideon: ^7降落点就在前面！准备跳伞！
+coop_outro,11.5,12.8,^2Gideon: ^7继续移动！
+coop_outro,15.7,16.7,^2Gideon: ^7这边！
+coop_outro,20.2,22.1,^2Gideon: ^7快！快走！
+coop_outro,28.5,29.8,^2Gideon: ^7走！走！
+coop_outro,30,32.7,^2Gideon: ^7你被咬了吗？士兵看着我，你被咬了吗？
+coop_outro,33,34.6,^2Gideon: ^7下面发生了什么？
+coop_outro,35.2,37.6,^2Gideon: ^7你没事了。你现在安全了小子。
+coop_outro,37.9,39.9,^2Gideon: ^7我们没剩多少人了。
+coop_outro,43.2,47.1,^2Gideon: ^7老天。你看到了吗？
+crash_load,1.3,3.6,^2Cormack: ^7金平，这里是哨兵二三。
+crash_load,3.7,6,^2Cormack: ^7追踪器已成功与目标对接。
+crash_load,6.1,10.4,^2Kingpin: ^7收到二三，我们现在已经锁定了潘多拉。
+crash_load,10.5,13.5,^2Kingpin: ^7Projected destination is Rio Gallegos Air base. 
+crash_load,13.6,16.4,^2Kingpin: ^7如果艾恩斯计划在本半球任何地方发动袭击，
+crash_load,16.5,19.1,^2Kingpin: ^7this would represent an ideal staging point. 
+crash_load,19.3,22.6,^2Kingpin: ^7Our only option is to intercept Pandora in international airspace 
+crash_load,22.7,24.5,^2Kingpin: ^7and force a controlled landing. 
+crash_load,24.6,26.9,^2Kingpin: ^7Coordinates for mid-air rendezvous to follow. 
+crash_load,27,29.6,"^2Cormack: ^7Roger that, I've got a team suiting up now. "
+crash_load,29.7,33.1,^2Kingpin: ^7这是个大动作科马克。你们将直接打击阿特拉斯。
+crash_load,33.2,36.4,^2Kingpin: ^7No more working from the shadows. 
+democracy,4.3,9.3,^2Irons: ^7民主？民主。民主不是这些人需要的，
+democracy,9.4,11.2,^2Irons: ^7靠，甚至不是他们想要的。
+democracy,11.6,14.4,^2Irons: ^7美国满世界跑来跑去，一个世纪以来
+democracy,14.5,17.9,^2Irons: ^7在一个又一个国家试图建立民主，
+democracy,18,22.6,^2Irons: ^7一次都没有成功过。你觉得是为什么？
+democracy,23.9,27.1,^2Irons: ^7因为这些国家没有最基本的
+democracy,27.2,30.7,^2Irons: ^7支撑民主的必要基石。
+democracy,30.9,34.6,^2Irons: ^7像我们应当容忍那些不同意我们的人，
+democracy,34.7,38.4,^2Irons: ^7或者我们应当容忍那些信仰不同神明的人，
+democracy,38.5,42.4,^2Irons: ^7or that a journalist ought to be able to disagree with the fucking president. 
+democracy,42.8,46.6,^2Irons: ^7而你以为你可以走进一个基于原教旨主义
+democracy,46.7,50.1,^2Irons: ^7宗教原则的国家，扔几颗炸弹，推翻一个独裁者，
+democracy,50.2,52.6,^2Irons: ^7然后建立一个民主国家？
+democracy,52.9,56.9,"^2Irons: ^7Heh, give me a break. "
+democracy,57.5,61,^2Irons: ^7人们不想要自由。他们想要规则、界限、
+democracy,61.1,65,^2Irons: ^7保护。抵御侵略者和他们自己。
+democracy,65.5,70.6,^2Irons: ^7人们需要一个既能提供约束又能提供支持的领导者，
+democracy,70.7,77.8,^2Irons: ^7来遏制混乱。你给了他们这些，他们就会跟随。
+democracy,80.9,83.7,^2Irons: ^7And that's where I come in. 
+detroit_load,1,2.8,^2News Anchor: ^7最新消息——你现在看到的是……
+detroit_load,2.9,5.9,^2News Anchor: ^7显然是一个非常令人不安的直播画面。
+detroit_load,6,8.1,^2News Anchor: ^7那是西雅图附近的韦克龙太平洋反应堆，
+detroit_load,8.2,10.2,^2News Anchor: ^7我们有未经证实的报道……
+detroit_load,10.5,14.2,^2News Anchor: ^7疾控中心已下令疏散底特律市中心
+detroit_load,14.3,17.1,^2News Anchor: ^7五英里半径范围内的所有非必要人员。
+detroit_load,17.2,18.7,^2News Anchor: ^7……分发碘化钾片剂……
+detroit_load,18.8,21.9,^2News Anchor: ^7……整个西部的大规模协调攻击。
+detroit_load,22.2,24.2,^2News Anchor: ^7这是直播画面——是
+detroit_load,24.3,27.8,"^2News Anchor: ^7appears to be some kind of statement from the KVA leader \Hades\""."""
+detroit_load,28.3,31.3,^2Hades: ^7我的世界同胞们……
+detroit_load,31.4,34.9,^2Hades: ^7今天你们感到害怕。
+detroit_load,35.5,41.1,^2Hades: ^7你们害怕是因为你们从沉睡中被唤醒了。
+detroit_load,44.2,47.5,^2Irons: ^7有些日子我们永远不会忘记……
+detroit_load,47.6,51.6,^2Irons: ^7那些烙印在我们记忆中直到死亡的时刻……
+detroit_load,51.7,55.9,^2Irons: ^7那天你在哪里？当一切改变的那一天？
+detroit_load,56,61,^2Irons: ^7四年前，一个人试图摧毁我们的生活方式。
+detroit_load,61.1,65.1,^2Irons: ^7一个人试图把世界推向黑暗。
+detroit_load,65.4,68.8,^2Irons: ^7感觉我们永远找不到回来的路。
+detroit_load,68.9,72.5,^2Irons: ^7但我们做到了。一起。
+detroit_load,74.6,79.4,^2Irons: ^7当你们脆弱时，我们给了你们力量。
+detroit_load,79.5,83.1,^2Irons: ^7当你们生病时，我们给了你们治疗。
+detroit_load,83.7,87.5,^2Irons: ^7当混乱时，我们带来了秩序。
+detroit_load,87.9,94.7,^2Irons: ^7稳定、安全、重新开始的机会。
+detroit_load,95.4,97.3,^2Irons: ^7我们是谁？
+detroit_load,98.7,102.8,^2Irons: ^7我们是前进的道路。
+df_baghdad_load,1.3,4.7,^2Pilot: ^7二一，我们航向315度磁方位，飞行高度4000英尺，
+df_baghdad_load,4.8,8.2,"^2Pilot: ^7distance: two nautical miles from the target, over. "
+df_baghdad_load,8.8,11.2,^2Knox: ^7正在将抬头显示器连接到战场网络。
+df_baghdad_load,11.7,14.1,^2Gideon: ^7我们的主要目标是阿特拉斯指挥中心，艾恩斯
+df_baghdad_load,14.2,16.4,^2Gideon: ^7正在深处指挥战争行动。
+df_baghdad_load,16.9,20.6,^2Gideon: ^7Multiple MD turrets have been placed as air defenses around the city. 
+df_baghdad_load,20.7,23.6,^2Gideon: ^7我们需要摧毁它们才能到达指挥中心。
+df_baghdad_load,24.3,26.5,^2Knox: ^7距离目标两百米。
+df_baghdad_load,26.6,29.9,^2Gideon: ^7关闭抬头显示器，准备着陆。
+df_fly_load,4.5,6.7,^2Irons: ^7全世界在问一个问题。
+df_fly_load,6.8,9,^2Irons: ^7我为什么要攻击美国？
+df_fly_load,9.8,15.4,^2Irons: ^7The United States has had the world in a constant state of war for over a hundred years. 
+df_fly_load,15.5,18.5,^2Irons: ^7我们一次又一次地看到这种
+df_fly_load,18.6,21.6,^2Irons: ^7好战的军事主义政策的灾难性后果。
+df_fly_load,21.7,25.3,^2Irons: ^7这些战争没有带来解决方案或和平。
+df_fly_load,25.4,28.2,^2Irons: ^7这些战争只会带来更多的战争。
+df_fly_load,28.3,33,^2Irons: ^7The United States has set the agenda because they wielded the biggest stick.  
+df_fly_load,33.1,34.5,^2Irons: ^7现在不会了。
+df_fly_load,34.6,41.8,^2Irons: ^7这不是一场战争的开始，这是一切战争的终结。
+df_fly_load,45.3,49.6,^2Mitchell: ^7旧金山之后，整个自由世界都转而反对阿特拉斯。
+df_fly_load,49.7,53.1,^2Mitchell: ^7艾恩斯把自己困在了新巴格达的总部。
+df_fly_load,53.2,57.8,^2Mitchell: ^7所有通讯中断——双方都知道接下来会发生什么。
+df_fly_load,57.9,60.3,^2Mitchell: ^7Our mission was to fly in with the 37th Airborne 
+df_fly_load,60.4,62.6,^2Mitchell: ^7的震慑与敬畏行动中与第37空降师一同飞入。
+df_fly_load,62.7,65.9,^2Mitchell: ^7从那里我们将脱离并潜入阿特拉斯指挥中心，
+df_fly_load,66,67.7,^2Mitchell: ^7干掉艾恩斯。
+df_fly_load,68,71,^2米切尔: ^7对科马克来说，那是旅程的终点。
+df_fly_load,71.2,74,^2Mitchell: ^7He'd been waiting five years for this day. 
+df_fly_load,74.1,75.6,^2金皮恩: ^7计划临时有变。
+df_fly_load,75.7,78,^2金皮恩: ^7你们将从东面和北面包抄
+df_fly_load,78.1,80.5,^2金皮恩: ^7掩护蓝队出击目标上空。
+df_fly_load,80.6,84.4,^2科马克: ^7明白，长官。看来我分到了轻松的差事。
+df_fly_load,84.5,86.2,^2金皮恩: ^7没有任何轻松的差事可选。
+df_fly_load,86.3,88.8,^2Kingpin: ^7I just don't want all my assets in play at once. 
+df_fly_load,88.9,91.1,^2金皮恩: ^7我们只有一次机会抓住那个混蛋。
+df_fly_load,91.2,92.5,^2科马克: ^7一次就够了。
+df_fly_load,92.6,95.5,^2金皮恩: ^7我知道。保住命回来。你是我们的关键证人
+df_fly_load,95.6,97.7,^2金皮恩: ^7等我们把他的屁股拖上海牙法庭的时候。
+df_fly_load,97.8,98.9,^2科马克: ^7我很期待。
+df_fly_load,99,100.4,^2Kingpin: ^7Alright good luck. 
+df_fly_load,107.6,112.6,^2米切尔: ^7已经没什么可说的了。我们都知道必须做什么。
+df_fly_load,113.7,119.5,^2米切尔: ^7这是终结的开始……对我们中的某个人而言。
+finale_load,20,26.1,^2伊洛娜: ^7坚持住，坚持住……我们快到了。
+finale_load,26.2,29.5,^2科马克: ^7快到了……快到了。
+finale_load,29.6,33.1,^2米切尔: ^7不远了。
+finale_load,36.2,40.5,^2科马克: ^7别停下……别……
+finale_load,43.1,46.6,^2伊洛娜: ^7加油，科马克。
+finale_load,56.4,57.9,^2米切尔: ^7那现在怎么办？
+finale_load,59.7,62.9,^2吉迪恩: ^7现在我们去结束这一切。我们是唯一
+finale_load,63,66.9,^2吉迪恩: ^7能阻止艾恩斯发射曼提柯尔的人。
+finale_load,67,71.6,^2伊洛娜: ^7我们三个对抗一支军队……这是自杀。
+finale_load,72.3,76.9,^2吉迪恩: ^7你说得对。但这正是他会做的事。
+finale_load,81.5,83.3,^2伊洛娜: ^7好吧。
+finale_load,85.8,88,^2米切尔: ^7你有什么主意吗？
+finale_load,91.8,93.4,^2吉迪恩: ^7只有一个。
+fusion_load,2.3,7.6,^2米切尔: ^7在阿特拉斯的生活和海军陆战队完全不同……但我不抱怨。
+fusion_load,10.9,14.3,^2解说员: ^7生死攸关之际，阿特拉斯部队
+fusion_load,14.4,17.4,^2解说员: ^7迅速行动，营救人质。
+fusion_load,20,23.7,^2小丑: ^7天杀的吉迪恩——我不知道你还是个电影明星。
+fusion_load,23.8,26.8,^2吉迪恩: ^7悠着点——我知道这可能是你这乡巴佬
+fusion_load,26.9,28.9,^2吉迪恩: ^7头一回见到有满口牙的人了，
+fusion_load,29,30.4,^2吉迪恩: ^7但别得意忘形。
+fusion_load,30.5,34.5,^2小丑: ^7哈，真逗，因为你妈也……天啊……
+fusion_load,34.6,36.3,^2小丑: ^7你看见那玩意儿了吗？
+fusion_load,37.9,39.3,^2米切尔: ^7不错吧？
+fusion_load,39.4,43.9,^2吉迪恩: ^7你只是运气好——KVA每天都在变强。
+fusion_load,44,47.4,^2米切尔: ^7话说回来，我们从水里捞出来的那家伙怎么样了？
+fusion_load,47.5,50.3,^2吉迪恩: ^7艾恩斯接手了——我没意见。
+fusion_load,50.4,54.8,^2小丑: ^7真他妈猛。太他妈猛了。
+fusion_load,56.5,59.9,^2艾恩斯: ^7继续，小子。继续。
+fusion_load,60,62.6,^2吉迪恩: ^7长官，有什么需要我们帮忙的吗？
+fusion_load,64.9,67.2,^2艾恩斯: ^7嗯，先给个杯子吧。
+fusion_load,67.3,71.6,^2吉迪恩: ^7我请你喝更好的。来，兄弟们，围过来。
+fusion_load,76.9,81,"^2Irons: ^7There's an old military saying, You treat your men like you would"""
+fusion_load,81.1,84.5,"^2Irons: ^7your own beloved sons, and they'll follow you into the deepest valley.""
+fusion_load,85.9,91.4,^2Irons: ^7I lost my son"," and it taught me the importance of seizing the moment"""
+fusion_load,91.9,95.6,^2艾恩斯: ^7……有机会时把该说的话说出来。
+fusion_load,96.8,100.4,^2艾恩斯: ^7诸位干得非常漂亮。拉各斯为阿特拉斯打开了
+fusion_load,101.5,107.4,^2艾恩斯: ^7绝佳的机会——为此，我心存感激。
+fusion_load,107.5,109.7,"^2Irons: ^7To you, gentlemen. "
+fusion_load,113.7,115.8,^2米切尔: ^7庆祝的感觉真不错。
+fusion_load,116.1,122,^2米切尔: ^7但吉迪恩说得对。我们只是运气好。而KVA越来越强……
+fusion_load,122.1,125.2,^2米切尔: ^7……野心也越来越大，日复一日。
+greece_load,2.3,4.3,^2米切尔: ^7那是我们离目标最近的一次……
+greece_load,4.4,7.9,^2米切尔: ^7追踪哈迪斯四年了，现在我们抓到了他的二号人物。
+greece_load,8,10.2,^2Mitchell: ^7The Doctor was the key to everything. 
+greece_load,10.3,13.8,^2伊洛娜: ^7那么，我们重新开始。
+greece_load,13.9,17.8,^2伊洛娜: ^7这些人——他们是谁？
+greece_load,18.5,21.2,"^2Doctor: ^7So this is what you think of me, uh? "
+greece_load,21.6,23.7,^2博士: ^7你觉得我是叛徒？
+greece_load,25.4,26.8,^2博士: ^7去你的！
+greece_load,30.9,35.1,^2伊洛娜: ^7我觉得我说你是什么，你就是什么。
+greece_load,35.2,38.6,^2米切尔: ^7伊洛娜是独一无二的。前特种部队，现在为阿特拉斯工作。
+greece_load,38.7,41,^2米切尔: ^7她可以是你最好的朋友……
+greece_load,41.1,42.6,^2米切尔: ^7也可以是你最可怕的噩梦……
+greece_load,42.7,44.4,^2米切尔: ^7但你永远不知道会是哪一个。
+greece_load,45,50,^2伊洛娜: ^7我们已经有了名单，现在只需要知道会议的时间和地点。
+greece_load,50.1,57,^2博士: ^7你不如杀了我。我已经是个死人了。
+greece_load,61.3,62.8,^2米切尔: ^7但一旦她抓住了你的把柄……
+greece_load,62.9,69,^2伊洛娜: ^7拜托——皮埃尔，配合我。让我们互相帮助。
+greece_load,69.9,73.1,^2米切尔: ^7一切都结束了。
+greece_load,79.9,82.7,^2金皮恩: ^7只有一个来源。情报核实过了吗？
+greece_load,82.8,85.5,^2艾恩斯: ^7情报可靠——哈迪斯将与他的金主会面，
+greece_load,85.6,87.7,^2艾恩斯: ^7二十四小时后在圣托里尼。
+greece_load,87.8,90,^2金皮恩: ^7艾恩斯先生——发起进攻的协议需要……
+greece_load,90.1,94.7,^2艾恩斯: ^7此人应对五万条人命负责，将军。我们要行动了。
+greece_load,94.8,96.7,^2金皮恩: ^7在外围主权领土上行动？
+greece_load,96.8,100.2,^2金皮恩: ^7未经国会批准，这将是战争行为。
+greece_load,100.3,106.5,^2艾恩斯: ^7阿特拉斯是国际注册的私人公司。我们不需要国会。
+greece_load,106.6,108.6,^2艾恩斯: ^7诸位。可以行动了吗？
+greece_load,108.7,111,^2吉迪恩: ^7我们随时待命，长官。您下命令就行。
+greece_load,111.1,113.4,^2艾恩斯: ^6我要你的团队六小时内到位。
+greece_load,114,114.9,^2金皮恩: ^7以谁的授权？
+greece_load,115,118.3,^2艾恩斯: ^7以我的授权！
+irons_estate_load,2.1,3.6,^2Cormack: ^7You've got questions. 
+irons_estate_load,3.7,5.5,^2科马克: ^7是时候给你一些答案了。
+irons_estate_load,5.6,10.2,^2科马克: ^7在此之前，我们一直潜伏在暗处。观察。等待。
+irons_estate_load,10.3,12,^2科马克: ^7我们成立于四年前。
+irons_estate_load,12.1,14.5,^2科马克: ^7一支由美国领导的多国部队
+irons_estate_load,14.6,15.5,^2科马克: ^7代号
+irons_estate_load,15.6,16.8,^2科马克: ^7哨兵。
+irons_estate_load,16.9,17.8,^2科马克: ^7我们的使命，
+irons_estate_load,17.9,20.1,^2科马克: ^7调查KVA的袭击，
+irons_estate_load,20.2,23.7,^2Cormack: ^7and prevent anything like that from happening again. 
+irons_estate_load,24,26.9,^2科马克: ^7但很快我们就发现，还有一个更大的威胁……
+irons_estate_load,27,30.3,^2Cormack: ^7A man ready to exploit this tragedy for his own gain. 
+irons_estate_load,30.4,31.5,^2科马克: ^7袭击之后，
+irons_estate_load,31.6,33.4,^2科马克: ^7阿特拉斯达到了新的高度。
+irons_estate_load,33.5,38,"^2Cormack: ^7They took over security for ports, shipping lanes, pipelines. "
+irons_estate_load,38.1,39.1,^2科马克: ^7一个又一个国家，
+irons_estate_load,39.2,41.9,^2科马克: ^7将他们最关键的基础设施拱手交出，
+irons_estate_load,42,43.4,^2Cormack: ^7to Jonathan Irons. 
+irons_estate_load,43.5,45.5,^2科马克: ^7我们发现时为时已晚，
+irons_estate_load,45.6,47.1,^2Cormack: ^7he was surrounding us. 
+irons_estate_load,47.2,50.7,"^2Cormack: ^7And now in the last ten days, ISA chatter has surged.  "
+irons_estate_load,50.8,53.3,^2科马克: ^7有一个词不断被标记：
+irons_estate_load,53.4,55.1,"^2Cormack: ^7\MANTICORE\"""""
+irons_estate_load,55.2,56.9,^2科马克: ^7阿特拉斯即将采取行动。
+irons_estate_load,57,58.9,^2科马克: ^7但我们不知道是什么行动。
+irons_estate_load,59,61.7,^2科马克: ^7把你弄出来是有风险的，但你是我们最好的希望，
+irons_estate_load,61.8,65.5,^2科马克: ^7去查明曼提柯尔是什么，并阻止它。
+irons_estate_load,65.7,69.3,^2科马克: ^7所以怎么样，米切尔——你加入吗？
+lab_load,1.4,3.3,^2诺克斯: ^7这……就是曼提柯尔。
+lab_load,4.1,8,^2诺克斯: ^7一种针对特定基因类型的生物制剂。
+lab_load,8.1,12.4,"^2Knox: ^7If your DNA signature isn't in the Atlas database, you're dead. "
+lab_load,12.5,18.5,^2科马克: ^7所以他可以把这玩意儿丢到战场中间。他的部队活下来——我们的死。
+lab_load,18.6,22.9,^2诺克斯: ^7没错——接触哪怕一个孢子都是致命的。防化服没用。
+lab_load,23,24,^2科马克: ^7可以投入使用了吗？
+lab_load,24.1,26.7,^2诺克斯: ^7未知——但他既然做出了这个样本，
+lab_load,26.8,29.7,^2Knox: ^7he could be already manufacturing at an industrial scale. 
+lab_load,29.8,35.4,"^2Cormack: ^7If he is, we need to know the where and the how - it's the only way we bring Irons down. "
+lab_load,35.5,39.7,^2诺克斯: ^7问题是，阿特拉斯有几十个具备大规模生产能力的设施。
+lab_load,39.8,40.6,^2诺克斯: ^7等我们把线索拼凑起来的时候……
+lab_load,40.7,45.3,^2米切尔: ^7吉迪恩知道位置。
+lab_load,46.9,49.2,^2科马克: ^7你确定他能信任吗？
+lab_load,49.3,55.3,^2米切尔: ^7没有他，这次任务就不可能。我们还有别的选择吗？
+lab_load,68.1,70.7,^2吉迪恩: ^7目标是保加利亚的一家前木材厂。
+lab_load,70.8,74.2,^2吉迪恩: ^7我们在会合点集合，与科马克和他的小队会合。
+lab_load,74.3,76.1,^2飞行员: ^7距离目标三分钟。
+lab_load,76.9,81.1,^2吉迪恩: ^7关于艾恩斯，你是对的。只是我花了一段时间才想明白。
+lab_load,81.7,83.7,^2米切尔: ^7迟做总比不做好，对吧？要不是你，
+lab_load,83.8,86.4,^2米切尔: ^7我们还在黑暗中摸索。
+lab_load,86.8,88.5,^2吉迪恩: ^7和以前一样，嗯？
+lab_load,95,98.9,^2飞行员: ^7金皮恩，这里是蝰蛇五三，我们被击中了！阿特拉斯的EMP！
+lab_load,99.4,101.4,^2吉迪恩: ^7操！外骨骼失效了！
+lab_load,102.9,105.4,^2飞行员: ^7我们被击中了！撑不住了！准备撞击！
+lab_load,105.5,107.2,^2吉迪恩: ^7快！跳！
+lagos_load,2.2,3.9,^2米切尔: ^7朝鲜之后，我以为我的军旅生涯结束了。
+lagos_load,4.3,6.7,^2米切尔: ^7但艾恩斯给了我相信的东西。
+lagos_load,6.8,9.3,^2米切尔: ^7把脚迈进门槛是一回事。
+lagos_load,9.4,12.5,"^2Mitchell: ^7Next, you gotta prove you belong there. "
+lagos_load,12.6,15.5,^2米切尔: ^7两个月后，我得到了第一次机会。
+lagos_load,16.3,20.6,^2解说员: ^7就在十二小时前，尼日利亚总理塞缪尔·阿比多约
+lagos_load,20.7,25.1,^2解说员: ^7在拉各斯参加国际技术峰会时被劫为人质。
+lagos_load,25.2,28.6,^2解说员: ^7我们相信这是KVA所为——一个由前车臣分裂分子
+lagos_load,28.7,32.9,^2解说员: ^7创立的极端反西方恐怖组织。
+lagos_load,33.1,35.2,^2解说员: ^7其头目的位置和真实身份，
+lagos_load,35.3,38,"^2Narrator: ^7code-named Hades"""," remains unknown."""
+lagos_load,38.1,41.3,^2解说员: ^7虽然此次绑架的动机尚不明确，但这与过去几年中
+lagos_load,41.4,45.4,^2Narrator: ^7a series of bolder attacks attributed to the KVA over the past several years. 
+lagos_load,45.5,48.9,^2解说员: ^7你们的任务是与阿贾尼上尉指挥的当地部队会合，
+lagos_load,49,51.9,^2解说员: ^7并立即释放总理。
+lagos_load,52.3,56.2,^2吉迪恩: ^7这些外行以为他们懂人质救援。让他们看看真正的实力。
+lagos_load,56.8,58.1,^2吉迪恩: ^7看你的了，新兵。
+lagos_load,58.4,62.8,^2米切尔: ^7好，再等一下，同步还没好。
+lagos_load,64.9,71.2,^2米切尔: ^7好了，搞定了。这些东西真是令人印象深刻。哇！
+lagos_load,72.2,76.9,^2吉迪恩: ^7别太迷恋这些玩具。最终还得靠使用它们的士兵。
+lagos_load,77.7,81.8,^2阿贾尼: ^7吉迪恩，我的人已经就位。就等你下令开始行动。
+lagos_load,81.9,84.5,^2吉迪恩: ^7收到。五分钟后全面出击。
+lagos_load,86.7,89.3,^2吉迪恩: ^7别让我们在外面被干掉了，嗯，新兵？
+lagos_load,91.4,93.3,^2米切尔: ^7收到。
+power,4.3,6.3,^2艾恩斯: ^7每个人都认为自己的想法是对的。
+power,6.4,9.6,^2艾恩斯: ^7所以那些你们称之为恐怖分子的人，自称为自由斗士。
+power,9.7,12.4,^2艾恩斯: ^7原教旨主义者认为自己是对的，资本家认为自己是对的，
+power,12.5,13.9,^2Irons: ^7the communists think they're right. 
+power,14,17.3,^2艾恩斯: ^7而且没有人能说服任何人任何事情。
+power,17.8,20.9,^2艾恩斯: ^7所有这些高尚的人，在国会和议会里
+power,21,23.1,^2艾恩斯: ^7向全世界说教。
+power,23.2,28,^2艾恩斯: ^7他们的时代早已过去，却拒绝承认——至少公开场合——
+power,28.8,34,^2艾恩斯: ^7决定谁对的不是理念。权力决定谁是对的。
+power,39.1,45.4,^2艾恩斯: ^7而我有权力，所以我说了算。
+recovery_load,0.1,3.4,^2记者: ^7……经过第二天的激战，美国海军陆战队成功
+recovery_load,3.5,7.4,^2记者: ^7将朝鲜军队赶出首尔。随着又一个师
+recovery_load,7.5,10.4,^2记者: ^7即将抵达，大家有很高期望，我们或许最终能看到
+recovery_load,10.5,14.5,^2记者: ^7该地区恢复和平与稳定。
+recovery_load,17.9,24.2,^2米切尔: ^7为什么一个人得以幸免，而另一个人却被夺走生命？至今我仍无法回答。
+recovery_load,24.8,28.5,^2米切尔: ^7但死亡终将降临我们所有人。
+recovery_load,28.7,31.3,^2米切尔: ^7当你在四小时内失去六千多名战友时，
+recovery_load,31.4,35,^2米切尔: ^7一个人的死亡很容易变成又一个数字。
+recovery_load,35.7,38.7,^2米切尔: ^7但我只知道我最好的朋友不在了，
+recovery_load,38.8,42,^2米切尔: ^7而在我内心深处，我宁愿死的是我。
+recovery_load,42.4,45.8,^2米切尔: ^7死去的人——他们已经还清了债。
+recovery_load,45.9,48.6,^2米切尔: ^7账单要由活着的人来付。
+recovery_load,50.7,54.8,^2科马克: ^7那么，是时候告别列兵威廉·罗伯特·艾恩斯了。
+recovery_load,55.2,58.7,^2科马克: ^7一个我有幸指挥过的人。
+recovery_load,59,63.1,^2科马克: ^7生命的重要性在于它对他人生活的影响。
+recovery_load,63.9,68.9,^2科马克: ^7按此标准，列兵艾恩斯是我们当中最优秀的之一。
+sanfran_b_load,0.1,17,^2操作员: ^7（电台通讯声）
+sanfran_b_load,17.6,21.3,^2电台: ^7哨兵零一，请求情况报告，那边发生了什么，完毕！
+sanfran_b_load,22.4,25.3,^2电台: ^7……哨兵零一收到，完毕。
+sanfran_b_load,25.8,29.3,^2电台: ^7科马克少校，我们需要立即得到情况报告，确认……
+sanfran_b_load,37.6,39.1,^2科马克: ^7老天……
+sanfran_b_load,55.4,60.2,^2诺克斯: ^7科马克——我们在目标参考点三和五发现动静。
+sanfran_b_load,61.3,63.4,^2诺克斯: ^7确认那些货船有变化。
+sanfran_b_load,66.1,67.6,^2诺克斯: ^7他们在攻击舰队。
+sanfran_b_load,68.3,68.8,^2诺克斯: ^7这将是一场屠杀！
+sanfran_b_load,68.9,73.4,^2科马克: ^7冷静点，中尉！我在该区域还有多少资产可用？
+sanfran_b_load,73.8,76,^2诺克斯: ^7扫描中……请稍候。
+sanfran_b_load,77.7,79.6,^2诺克斯: ^7正在为您接通。
+sanfran_b_load,81.6,83.9,^2科马克: ^7所有哨兵小队，电台检查。
+sanfran_b_load,84,86.6,^2米切尔: ^7哨兵二二。电台检查。查理利马。
+sanfran_b_load,86.7,91.2,^2吉迪恩: ^7哨兵二一，信号清晰。那我们他妈的现在该怎么办？
+sanfran_b_load,91.3,97.3,^2科马克: ^7收到。下降并在航母处保持位置，我正在赶过去。
+sanfran_load,2.6,6.5,^2艾恩斯: ^7我很荣幸成为首位私营公司首席执行官
+sanfran_load,6.6,10,^2艾恩斯: ^7成为联合国安理会成员。
+sanfran_load,10.1,14.7,^2艾恩斯: ^7不幸的是，我今天出席被一连串的猜测所笼罩，
+sanfran_load,14.8,19.4,^2Irons: ^7That my company is developing a weapon of mass destruction which would be capable 
+sanfran_load,19.5,27.2,^2艾恩斯: ^7能够针对特定种族群体。我想正面回应这些指控。
+sanfran_load,28.4,31.5,^2艾恩斯: ^7我们是否在开发这样的武器？
+sanfran_load,32.4,35.5,^2艾恩斯: ^7不，我们没有。
+sanfran_load,37.2,39.9,^2艾恩斯: ^7因为我们已经开发完了。
+sanfran_load,40.5,42.3,^2艾恩斯: ^7但恕我直言，
+sanfran_load,42.4,47.4,^2艾恩斯: ^7联合国是一个来自不同时代的遗物，那时国家
+sanfran_load,47.5,51.4,^2Irons: ^7were unique in their ability to solve the world's problems. 
+sanfran_load,52.3,55.3,^2艾恩斯: ^7但现在已经不是这样了。
+sanfran_load,55.5,60.7,^2Irons: ^7Primarily because you have outsourced the job to me. 
+sanfran_load,61.7,65.5,^2艾恩斯: ^7我派人去为你们的战争送死。
+sanfran_load,65.7,69.2,^2艾恩斯: ^7所以我觉得我有资格告诉你们，
+sanfran_load,69.9,73.5,^2艾恩斯: ^7你们的战争行不通！
+sanfran_load,74.5,79.9,^2艾恩斯: ^7所以我的优先事项变了；从利润转向政策。
+sanfran_load,80.1,84.1,^2Irons: ^7Because politicians don't know how to solve problems. 
+sanfran_load,84.8,88,^2Irons: ^7But I do. 
+sanfran_load,88.6,90.7,^2艾恩斯: ^7所以让我把话说清楚。
+sanfran_load,91.1,100.6,^2艾恩斯: ^7我来这里是为了解决世界的问题。而我相信世界的问题……
+sanfran_load,101.7,106.1,^2艾恩斯: ^7从你们开始。
+sanfran_load,111.4,112.9,^2米切尔: ^7那他妈的到底是什么？
+sanfran_load,113.1,117.8,^2吉迪恩: ^7说不上来，老兄，但那听起来很像艾恩斯在宣战。
+sanfran_load,118.2,121.4,^2米切尔: ^7我们摧毁了他的大规模杀伤性武器。没有了曼提柯尔，阿特拉斯不堪一击。
+sanfran_load,121.5,123.5,^2诺克斯: ^7科马克，你得看看这个！
+sanfran_load,123.6,124.6,^2科马克: ^7说。
+sanfran_load,124.7,126.8,^2诺克斯: ^7我们破解了最后一批上传文件的加密。
+sanfran_load,126.9,128.2,^2科马克: ^7我看到的是什么？
+sanfran_load,128.3,132.9,^2诺克斯: ^7潜在目标——如果阿特拉斯被逼到绝路，艾恩斯有备用计划。
+sanfran_load,133,138,^2科马克: ^7先发制人——他要在战斗还没开始前就把我们打垮。
+sanfran_load,138.8,143.2,^2米切尔: ^7直接攻击美国？我们确定艾恩斯真敢这么做？
+sanfran_load,146.1,149.9,^2吉迪恩: ^7那怎么打？阿特拉斯不可能同时攻击所有目标。
+sanfran_load,153.3,157.5,^2科马克: ^7旧金山。整个第三舰队都在海湾里。
+sanfran_load,157.7,160.8,^2Cormack: ^7I need you two on the ground now. 
+seoul_load,9.4,12.8,^2米切尔: ^7我们来到这个世界时，眼睛是闭着的。
+seoul_load,13.3,16.3,^2米切尔: ^7而我们大多数人选择一辈子这样活下去。
+seoul_load,17.6,20.6,^2米切尔: ^7我们盲目地跟随任何愿意带领我们的人……
+seoul_load,21.2,25.6,^2米切尔: ^7把自己交给任何能给我们目标感的事物。
+seoul_load,26.9,30.5,^2米切尔: ^7对我来说，那就是海军陆战队。
+seoul_load,30.6,34.5,^2米切尔: ^7六个月前，我和我最好的朋友威尔一起入伍。
+seoul_load,34.8,40,^2米切尔: ^7现在我们远在地球的另一端，被部署到韩国。
+seoul_load,40.1,42.6,^2米切尔: ^7我们是战友兄弟。
+seoul_load,42.7,48,^2米切尔: ^7无论情况多糟，我总能靠他让我保持清醒。
+seoul_load,50.3,52.8,^2威尔: ^7振作点，米切尔，情况没那么糟。
+seoul_load,53.4,55.5,^2米切尔: ^7我想只是终于开始有实感了。
+seoul_load,55.9,57.4,^2威尔: ^7啊，这就是我们当初报名参军的初衷。
+seoul_load,57.5,61.1,^2米切尔: ^7唉，我家老头子是海军陆战队的，所以我其实没太多选择。
+seoul_load,61.3,66.1,^2威尔: ^7是吗？我也是因为老头子才参军的。不过更多是为了躲开他。
+seoul_load,67.1,69,^2米切尔: ^7好吧，那没有比这儿更远的了。
+seoul_load,69.1,72.6,^2科马克: ^7好了，好了——听好了！
+seoul_load,72.7,76.4,^2科马克: ^7我们接到了命令——在着陆点厄普西隆插入。
+seoul_load,76.5,79.2,^2科马克: ^7速战速决，就像我们教你们的那样。
+seoul_load,79.7,81.2,^2科马克: ^7每个人都清楚了吗？
+seoul_load,82,83.5,^2科马克: ^7每个人都明白自己去哪儿了吗？
+seoul_load,83.6,84.5,^2全队: ^7哦——啦！
+seoul_load,84.6,85.6,^2科马克: ^7每个人都准备好了吗？！
+seoul_load,85.8,86.6,^2全队: ^7哦——啦！
+seoul_load,86.7,90.1,^2科马克: ^7行动！米切尔，艾恩斯，带队出发！
+seoul_load,90.2,91,^2威尔: ^7搞定它！
+seoul_load,93.9,95.9,^2Mitchell: ^7North Korea was invading Seoul. 
+seoul_load,96.7,98.4,^2米切尔: ^7我们必须把他们打回去。
+seoul_load,99.9,101.2,^2米切尔: ^7这不仅仅是一次任务。
+seoul_load,103.5,105.1,^2米切尔: ^7这是一次入队仪式。
