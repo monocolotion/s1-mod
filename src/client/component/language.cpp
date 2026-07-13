@@ -82,6 +82,46 @@ namespace language
 			console::info("language: Loaded %zu translations for '%s'\n", translations_cache.size(), lang_key);
 		}
 
+		void load_sl_reverse()
+		{
+			sl_reverse.clear();
+			sl_reverse_stable.clear();
+
+			std::string data;
+			if (!utils::io::read_file("data/sl_reverse.json", &data))
+			{
+				console::info("language: sl_reverse.json not found, "
+					"GSC display strings will not be translated\n");
+				return;
+			}
+
+			rapidjson::Document doc;
+			if (doc.Parse(data).HasParseError() || !doc.IsObject())
+			{
+				console::error("language: Failed to parse sl_reverse.json\n");
+				return;
+			}
+
+			sl_reverse_stable.reserve(doc.MemberCount() * 2);
+			for (auto it = doc.MemberBegin(); it != doc.MemberEnd(); ++it)
+			{
+				if (!it->value.IsString())
+					continue;
+
+				sl_reverse_stable.emplace_back(it->name.GetString());
+				sl_reverse_stable.emplace_back(it->value.GetString());
+			}
+
+			for (size_t i = 0; i + 1 < sl_reverse_stable.size(); i += 2)
+			{
+				sl_reverse[sl_reverse_stable[i]] = sl_reverse_stable[i + 1];
+			}
+
+			console::info("language: Loaded %zu reverse mappings "
+				"(English -> Chinese) from sl_reverse.json\n",
+				sl_reverse.size());
+		}
+
 		void apply_translations()
 		{
 			if (current_language != lang::schinese)
@@ -105,9 +145,36 @@ namespace language
 		// (e.g. SL_ConvertToString) that bypasses SEH_StringEd_GetString entirely.
 		// By patching the assets themselves we cover ALL lookup paths.
 		//
+
+		// SL_ConvertToString hook: intercepts all GSC string conversions.
+		static std::unordered_map<std::string, std::string> sl_reverse;
+		static std::vector<std::string> sl_reverse_stable;
+		static utils::hook::detour sl_convert_to_string_hook;
+
+		const char* sl_convert_to_string_stub(game::scr_string_t stringValue)
+		{
+			const auto* original = sl_convert_to_string_hook.invoke<const char*>(stringValue);
+			if (!original || current_language != lang::schinese)
+				return original;
+
+			// Only translate while the game is fully running.
+			if (!game::CL_IsCgameInitialized())
+				return original;
+
+			if (strchr(original, '^'))
+			{
+				const auto it = sl_reverse.find(original);
+				if (it != sl_reverse.end())
+					return it->second.c_str();
+			}
+
+			if (original[0])
+				g_untranslated.insert(original);
+			return original;
+		}
 		// Stable storage that outlives patch_localize_assets() calls.
 		// Asset value pointers point INTO this vector, so it must be persistent.
-		static std::vector<std::string> lentry_stable_strings;
+		static std::deque<std::string> lentry_stable_strings;
 		static std::unordered_set<std::string> lentry_patched;
 
 		void patch_localize_assets()
@@ -120,7 +187,7 @@ namespace language
 			{
 				decltype(&translations_cache) cache;
 				size_t* counter;
-				std::vector<std::string>* stable;
+				std::deque<std::string>* stable;
 				std::unordered_set<std::string>* seen;
 			} ctx = { &translations_cache, &patched, &lentry_stable_strings, &lentry_patched };
 
@@ -188,6 +255,24 @@ namespace language
 		return nullptr;
 	}
 
+		const char* get_translation_by_english(const std::string& english)
+		{
+			if (current_language != lang::schinese) return nullptr;
+			const auto it = sl_reverse.find(english);
+			if (it != sl_reverse.end())
+			{
+				return it->second.c_str();
+			}
+			return nullptr;
+		}
+
+		const char* get_translation_any(const std::string& str)
+		{
+			const char* result = get_translation(str);
+			if (result) return result;
+			return get_translation_by_english(str);
+		}
+
 	class component final : public component_interface
 	{
 	public:
@@ -195,6 +280,7 @@ namespace language
 		{
 			load_language_from_config();
 			load_translations_cache();
+			load_sl_reverse();
 
 			apply_translations();
 			patch_localize_assets();
@@ -202,6 +288,11 @@ namespace language
 			scheduler::on_game_initialized([]()
 			{
 				patch_localize_assets();
+
+				// Enable SL_ConvertToString hook for GSC display strings.
+				// Guarded by CL_IsCgameInitialized() to avoid map verification issues.
+				sl_convert_to_string_hook.create(
+					SELECT_VALUE(0x140314850, 0x1403F0F10), sl_convert_to_string_stub);
 			}, scheduler::pipeline::main);
 
 			// Batch-export all collected untranslated strings to JSON

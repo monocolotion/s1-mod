@@ -1,0 +1,8 @@
+{
+  "MP_SOLAR_ELEVATION": "海拔：185 米",
+  "MP_SOLAR_IN_PROGRESS": "能量偏转进行中",
+  "MP_SOLAR_MAP_KILLSTREAK_PICKUP": "按住 ^3[{+activate}]^7 获取太阳反射塔",
+  "MP_SOLAR_REFLECTOR_IN_USE": "太阳反射塔已在使用中。",
+  "MP_SOLAR_REFLECTOR_RESETTING": "太阳反射塔正在重新校准。",
+  "MP_SOLAR_RELECTION_TOWER": "太阳反射塔"
+}

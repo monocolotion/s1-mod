@@ -1,0 +1,8 @@
+{
+  "ZOMBIE_LAB_DOOR_TO_ADMIN": "按住^3[{+activate}]^7打开^3管理区^7",
+  "ZOMBIE_LAB_DOOR_TO_COURTYARD": "按住^3[{+activate}]^7打开^3庭院^7",
+  "ZOMBIE_LAB_DOOR_TO_EXPER": "按住^3[{+activate}]^7打开^3外骨骼测试区^7",
+  "ZOMBIE_LAB_DOOR_TO_LAB": "按住^3[{+activate}]^7打开^3停尸房^7",
+  "ZOMBIE_LAB_DOOR_TO_MILITARY": "按住^3[{+activate}]^7打开^3关押区^7",
+  "ZOMBIE_LAB_DOOR_TO_ROUNDABOUT": "按住^3[{+activate}]^7打开^3主枢纽^7"
+}

@@ -1,0 +1,7 @@
+{
+  "LUA_SP_COMMON_FLIGHT_CONTROLS": "飞行控制",
+  "LUA_SP_COMMON_FLIGHT_CONTROLS_OPTIONS": "你可以在选项菜单中反转飞行俯仰控制。",
+  "LUA_SP_COMMON_FLIGHT_PITCH_INVERSION": "飞行俯仰反转",
+  "LUA_SP_COMMON_REVERSE_FLIGHT_CONTROLS": "保持这样的控制设置？",
+  "LUA_SP_COMMON_TEST_STRING": "这是单人模式通用测试字符串。"
+}

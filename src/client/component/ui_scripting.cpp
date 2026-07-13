@@ -180,6 +180,20 @@ namespace ui_scripting
 			{
 				localized_strings::override(string, value);
 			};
+
+			game_type["gettranslatedstring"] = [](const game&, const script_value& key) -> arguments
+			{
+				if (!key.is<std::string>())
+				{
+					return {}; // nil -- silently ignore non-string keys
+				}
+				const char* translated = language::get_translation(key.as<std::string>());
+				if (translated)
+				{
+					return {translated};
+				}
+				return {}; // nil in Lua
+			};
 		}
 
 		void enable_globals()

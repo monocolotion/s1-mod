@@ -14,4 +14,10 @@ namespace language
 
 	// Get a translated string for a key, or nullptr if not found
 	const char* get_translation(const std::string& key);
+
+	// Get a Chinese translation by English text (reverse lookup), or nullptr
+	const char* get_translation_by_english(const std::string& english);
+
+	// Try both forward (key) and reverse (English) lookups
+	const char* get_translation_any(const std::string& str);
 }

@@ -1,0 +1,6 @@
+{
+  "MP_SPARK_MAP_KILLSTREAK": "高级斥力炮塔",
+  "MP_SPARK_MAP_KILLSTREAK_DESC": "产生辐射锥的炮塔。",
+  "MP_SPARK_MAP_KILLSTREAK_MAX": "该区域高级斥力炮塔过多。",
+  "MP_SPARK_MAP_KILLSTREAK_PICKUP": "按住 ^3[{+activate}]^7 获取高级斥力炮塔"
+}

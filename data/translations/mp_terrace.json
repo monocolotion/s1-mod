@@ -1,0 +1,7 @@
+{
+  "MP_TERRACE_DESTROYED_SNIPERDRONE": "已摧毁狙击无人机！",
+  "MP_TERRACE_MAP_KILLSTREAK": "狙击无人机",
+  "MP_TERRACE_MAP_KILLSTREAK_DESC": "操控狙击无人机",
+  "MP_TERRACE_MAP_KILLSTREAK_NOT_AVAILABLE": "狙击无人机不可用",
+  "MP_TERRACE_MAP_KILLSTREAK_PICKUP": "按住 ^3[{+activate}]^7 获取狙击无人机"
+}

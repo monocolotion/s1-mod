@@ -230,6 +230,11 @@ namespace ui_scripting
 			return this->as<T>();
 		}
 
+		operator script_value() const
+		{
+			return this->value_;
+		}
+
 	private:
 		arguments values_{};
 		script_value value_{};

@@ -1,0 +1,17 @@
+{
+  "GRAPPLE_INPUT_CEILING_GAMEPAD": "10 下降   ^3[{+stance}]^7 脱离",
+  "GRAPPLE_INPUT_CEILING_PC": "^3[{+back}]^7 下降   ^3[{+togglecrouch}]^7 脱离",
+  "GRAPPLE_INPUT_TUTORIAL": "^3[{+smoke}]^7 发射钩爪",
+  "GRAPPLE_INPUT_WALL_GAMEPAD": "10 下降   ^3[{+gostand}]^7 跳跃   ^3[{+stance}]^7 脱离",
+  "GRAPPLE_INPUT_WALL_PC": "^3[{+back}]^7 下降   ^3[{+gostand}]^7 跳跃   ^3[{+togglecrouch}]^7 脱离",
+  "GRAPPLE_INVALID_SURFACE": "无效表面",
+  "GRAPPLE_KILL": "^3[{+smoke}]^7 钩爪击杀",
+  "GRAPPLE_KILL_PULL": "^3[{+smoke}]^7 隐秘击杀",
+  "GRAPPLE_NO_FOOTING": "无立足点",
+  "GRAPPLE_NO_SPACE": "空间不足",
+  "GRAPPLE_TAPPY_HINT": "快速连按 ^3[{+activate}]^7",
+  "GRAPPLE_TOO_CLOSE": "距离太近",
+  "GRAPPLE_TOO_FAR": "距离太远",
+  "GRAPPLE_TOO_SHARP": "角度过陡",
+  "GRAPPLE_ZOOM_HINT": "^3[{+speed_throw}]^7 缩放"
+}

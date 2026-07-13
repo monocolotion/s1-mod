@@ -8,6 +8,7 @@
 #include "component/command.hpp"
 #include "component/console.hpp"
 #include "component/notifies.hpp"
+#include "component/language.hpp"
 
 #include "script_error.hpp"
 #include "script_extension.hpp"
@@ -463,6 +464,16 @@ namespace gsc
 				game::Scr_AddInt(utils::io::remove_file(converted_path));
 			});
 
+
+			add_function("gettranslatedstring_gsc", []
+			{
+				if (game::Scr_GetNumParam() < 1)
+					return;
+				const char* str = game::Scr_GetString(0);
+				const char* translated = language::get_translation_any(str);
+				if (translated)
+					game::Scr_AddString(translated);
+			});
 			utils::hook::set<std::uint32_t>(SELECT_VALUE(0x1403115BC, 0x1403EDAEC), 0x1000); // Scr_RegisterFunction
 
 			utils::hook::set<std::uint32_t>(SELECT_VALUE(0x1403115C2 + 4, 0x1403EDAF2 + 4), RVA(&func_table)); // Scr_RegisterFunction
