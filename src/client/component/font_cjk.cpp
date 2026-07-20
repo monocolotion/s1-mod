@@ -24,9 +24,9 @@ namespace font_cjk
 {
 	namespace
 	{
-		constexpr int ATLAS_W = 2048;
-		constexpr int ATLAS_H = 2048;
-		constexpr float FONT_SIZE = 32.0f;
+		constexpr int ATLAS_W = 4096;
+		constexpr int ATLAS_H = 4096;
+		constexpr float FONT_SIZE = 48.0f;
 
 		bool ready = false;
 		game::GfxImage* font_image = nullptr;
@@ -320,6 +320,17 @@ namespace font_cjk
 					}
 					else { out.push_back(*q++); }
 				}
+				else if (q[0] == '&' && q[1] == '&' && q[2] >= '0' && q[2] <= '9')
+				{
+					// &&N: normalized key-binding placeholder
+					if (key_idx < (int)eng_keys.size())
+					{
+						out += eng_keys[key_idx];
+						key_idx++;
+						q += 3;
+					}
+					else { out.push_back(*q++); }
+				}
 				else { out.push_back(*q++); }
 			}
 			return out;
@@ -348,7 +359,7 @@ namespace font_cjk
 			auto* ng = (game::Glyph*)malloc(sizeof(game::Glyph) * nc);
 			if (!ng) return;
 
-			// Per-font scaling: glyphs baked at FONT_SIZE=32, scale to pixelHeight.
+			// Per-font scaling: glyphs baked at FONT_SIZE=48, scale to pixelHeight.
 			// All rendering paths get correct-size glyphs automatically.
 			float per_font_scale = (font->pixelHeight > 0 && cjk_height_ratio > 0.01f)
 				? ((float)font->pixelHeight / (FONT_SIZE * cjk_height_ratio))
@@ -564,7 +575,7 @@ namespace font_cjk
 					static thread_local std::string resolved_buf;
 					resolved_buf = resolve_key_placeholders(text, translated);
 					static int rdr_log = 0;
-					if (rdr_log < 30)
+					if (rdr_log < 1)
 					{
 						rdr_log++;
 						console::info("font_cjk: R_AddCmdDrawText translate '%s' -> '%s'\n",
@@ -574,7 +585,7 @@ namespace font_cjk
 				}
 			}
 			static int cc = 0; cc++;
-			if (cc <= 5)
+			if (cc <= 1)
 			{
 				bool has_cjk = false;
 				for (const char* s = text; *s; s++)

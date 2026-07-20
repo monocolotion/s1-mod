@@ -21,6 +21,12 @@ namespace language
 		std::unordered_map<std::string, std::string> translations_cache;
 		std::unordered_set<std::string> g_untranslated;
 
+		// Track fastfile loading activity and game init time to detect
+		// when map loading finishes (for SL_ConvertToString hook activation).
+		std::chrono::steady_clock::time_point g_last_fastfile_time{};
+		std::chrono::steady_clock::time_point g_game_init_time{};
+		std::chrono::steady_clock::time_point g_sv_loaded_time{};
+
 		void load_language_from_config()
 		{
 			std::string data;
@@ -549,7 +555,11 @@ namespace language
 
 			{
 
+				g_last_fastfile_time = std::chrono::steady_clock::now();
 				patch_localize_assets();
+
+				// SV_Loaded() monitoring is handled by the
+				// continuous loop in on_game_initialized.
 
 			}
 
@@ -711,14 +721,23 @@ namespace language
 				// setup_functions() and returns the Chinese translation or nil.
 				const char* wrap_script =
 					"local origLocalize = Engine.Localize\n"
-					"Engine.Localize = function(key)\n"
+					"Engine.Localize = function(key, ...)\n"
 					"    if type(key) == \"string\" then\n"
 					"        local translated = game:gettranslatedstring(key)\n"
 					"        if translated ~= nil then\n"
+					"            local n = select(\"#\", ...)\n"
+					"            if n > 0 then\n"
+					"                local result = translated\n"
+					"                for i = 1, n do\n"
+					"                    local arg = select(i, ...)\n"
+					"                    result = result:gsub(\"&&\" .. i, tostring(arg))\n"
+					"                end\n"
+					"                return result\n"
+					"            end\n"
 					"            return translated\n"
 					"        end\n"
 					"    end\n"
-					"    return origLocalize(key)\n"
+					"    return origLocalize(key, ...)\n"
 					"end\n";
 
 				// Compile and execute via loadstring+pcall for safety
@@ -752,19 +771,61 @@ namespace language
 
 			}();
 				// Enable SL_ConvertToString hook. Initially dormant
-				// (g_sl_hook_active=false), activated after 5s to avoid
-				// interfering with map loading verification.
+				// (g_sl_hook_active=false), activated after fastfile
+				// loading settles to avoid interfering with map
+				// loading integrity verification.
 				sl_convert_to_string_hook.create(
 					SELECT_VALUE(0x140314850, 0x1403F0F10), sl_convert_to_string_stub);
 				console::info("language: Hooked SL_ConvertToString for GSC display strings\n");
-				// Activate the hook after 5s delay to let map
-				// verification complete. Works for both SP and MP.
-				scheduler::once([]
+				g_game_init_time = std::chrono::steady_clock::now();
+				g_last_fastfile_time = g_game_init_time;
+				// Continuous SV_Loaded() monitor: detects map
+				// entry/exit and manages SL hook activation.
+				// Activates 10s after map load; deactivates on
+				// map exit so the next map can verify cleanly.
+				scheduler::schedule([]
 				{
-					g_sl_hook_active = true;
-					scheduler::once([] { patch_subtitle_csv(); }, scheduler::pipeline::main, 10s);
-					console::info("language: SL_ConvertToString hook now active\n");
-				}, scheduler::pipeline::main, 5s);
+					static bool was_loaded = false;
+					bool is_loaded = game::SV_Loaded();
+
+					if (was_loaded && !is_loaded)
+					{
+						g_sl_hook_active = false;
+						g_sv_loaded_time = std::chrono::steady_clock::time_point{};
+						console::info("language: Map exited, SL deactivated\n");
+					}
+					was_loaded = is_loaded;
+
+					if (g_sl_hook_active || current_language != lang::schinese)
+						return scheduler::cond_continue;
+
+					auto now = std::chrono::steady_clock::now();
+
+					if (is_loaded && g_sv_loaded_time == std::chrono::steady_clock::time_point{})
+					{
+						g_sv_loaded_time = now;
+						console::info("language: Map loaded, waiting 10s...\n");
+					}
+
+					auto ff_elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+						now - g_last_fastfile_time).count();
+					auto sv_elapsed = g_sv_loaded_time != std::chrono::steady_clock::time_point{}
+						? std::chrono::duration_cast<std::chrono::seconds>(
+							now - g_sv_loaded_time).count() : 0;
+
+					if ((g_sv_loaded_time != std::chrono::steady_clock::time_point{} && sv_elapsed >= 10)
+						|| ff_elapsed >= 30)
+					{
+						g_sl_hook_active = true;
+						scheduler::once([] { patch_subtitle_csv(); }, scheduler::pipeline::main, 10s);
+						console::info("language: SL_ConvertToString now active "
+							"(sv=%llds ff=%llds)\n",
+							static_cast<long long>(sv_elapsed),
+							static_cast<long long>(ff_elapsed));
+					}
+
+					return scheduler::cond_continue;
+				}, scheduler::pipeline::main, 1s);
 
 				// Periodically patch newly-loaded LocalizeEntry assets.
 				// Fastfiles for each map are loaded after game init,

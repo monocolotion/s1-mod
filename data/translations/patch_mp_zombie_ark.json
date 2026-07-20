@@ -1,9 +1,9 @@
 {
   "AREA_INVALIDATION_BOMB_DEFUSE": "按住 ^3[{+activate}]^7 拆除炸弹",
-  "AREA_INVALIDATION_BREACH_CONTINUED": "阿特拉斯突击部队继续渗透 ^3&&1^7。",
-  "AREA_INVALIDATION_BREACH_DETECTED": "阿特拉斯突击部队在 ^3&&1^7 安设曼提柯尔炸弹。",
-  "AREA_INVALIDATION_BREACH_FAIL": "曼提柯尔炸弹于 ^3&&1^7 引爆。",
-  "AREA_INVALIDATION_BREACH_SUCCESS": "曼提柯尔炸弹于 ^3&&1^7 拆除。",
+  "AREA_INVALIDATION_BREACH_CONTINUED": "阿特拉斯突击部队继续渗透 ^3&&1^7",
+  "AREA_INVALIDATION_BREACH_DETECTED": "阿特拉斯突击部队在 ^3&&1^7 安设曼提柯尔炸弹",
+  "AREA_INVALIDATION_BREACH_FAIL": "曼提柯尔炸弹于 ^3&&1^7 引爆",
+  "AREA_INVALIDATION_BREACH_SUCCESS": "曼提柯尔炸弹于 ^3&&1^7 拆除",
   "AREA_INVALIDATION_VENTING_GAS": "排放曼提柯尔毒气。",
   "AREA_INVALIDATION_VENTING_GOLIATH": "转移能量以排放曼提柯尔毒气。",
   "KILLSTREAKS_DLC3_DISRUPTOR_TURRET": "按住 ^3[{+activate}]^7 部署高级斥力炮台",

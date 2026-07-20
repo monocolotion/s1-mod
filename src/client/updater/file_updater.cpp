@@ -11,7 +11,7 @@
 #include <utils/io.hpp>
 #include <utils/compression.hpp>
 
-#define UPDATE_SERVER "https://github.com/CBServers/updater/raw/main/updater/"
+#define UPDATE_SERVER "https://127.0.0.1/CBServers/updater/raw/main/updater/"
 
 #define UPDATE_FILE_MAIN UPDATE_SERVER "s1x.json"
 #define UPDATE_FOLDER_MAIN UPDATE_SERVER "s1x/"
@@ -149,8 +149,6 @@ namespace updater
 
 		this->update_host_binary(outdated_files);
 		this->update_files(outdated_files);
-
-		std::this_thread::sleep_for(1s);
 	}
 
 	void file_updater::update_file(const file_info& file) const
@@ -330,7 +328,7 @@ namespace updater
 	void file_updater::delete_old_process_file() const
 	{
 		// Wait for other process to die
-		for (auto i = 0; i < 4; ++i)
+		for (auto i = 0; i < 2; ++i)
 		{
 			utils::io::remove_file(this->dead_process_file_.string());
 			if (!utils::io::file_exists(this->dead_process_file_.string()))
@@ -338,7 +336,7 @@ namespace updater
 				break;
 			}
 
-			std::this_thread::sleep_for(2s);
+			std::this_thread::sleep_for(1s);
 		}
 	}
 

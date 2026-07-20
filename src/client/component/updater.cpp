@@ -61,7 +61,9 @@ namespace updater
 
 		void post_start() override
 		{
-			join();
+			// Don't block — let the update check run in background.
+			// The launcher should appear instantly; the update thread
+			// will be joined on pre_destroy() for cleanup.
 		}
 
 		void pre_destroy() override
@@ -71,7 +73,8 @@ namespace updater
 
 		void post_unpack() override
 		{
-			join();
+			// Don't block here either — the update already completed
+			// or is still running in background.
 		}
 
 	private:

@@ -1,9 +1,9 @@
 {
   "AREA_INVALIDATION_BOMB_DEFUSE": "按住 ^3[{+activate}]^7 拆除炸弹",
-  "AREA_INVALIDATION_BREACH_CONTINUED": "阿特拉斯突击部队继续渗透 ^3&&1^7。",
-  "AREA_INVALIDATION_BREACH_DETECTED": "阿特拉斯突击部队在 ^3&&1^7 安设曼提柯尔炸弹。",
-  "AREA_INVALIDATION_BREACH_FAIL": "曼提柯尔炸弹于 ^3&&1^7 引爆。",
-  "AREA_INVALIDATION_BREACH_SUCCESS": "曼提柯尔炸弹于 ^3&&1^7 拆除。",
+  "AREA_INVALIDATION_BREACH_CONTINUED": "阿特拉斯突击部队继续渗透 ^3&&1^7",
+  "AREA_INVALIDATION_BREACH_DETECTED": "阿特拉斯突击部队在 ^3&&1^7 安设曼提柯尔炸弹",
+  "AREA_INVALIDATION_BREACH_FAIL": "曼提柯尔炸弹于 ^3&&1^7 引爆",
+  "AREA_INVALIDATION_BREACH_SUCCESS": "曼提柯尔炸弹于 ^3&&1^7 拆除",
   "AREA_INVALIDATION_VENTING_GAS": "排放曼提柯尔毒气。",
   "AREA_INVALIDATION_VENTING_GOLIATH": "转移能量以排放曼提柯尔毒气。",
   "KILLSTREAKS_DLC3_DISRUPTOR_TURRET": "按住 ^3[{+activate}]^7 部署高级斥力炮台",
@@ -22,9 +22,9 @@
   "PLAYERMECH_SWARM_WEAPON_NAME": "AT6 MSL",
   "PLAYERMECH_TARGETING": "瞄准中",
   "PLAYERMECH_THREATS_DETECTED": "检测到威胁",
-  "ZOMBIE_DLC3_REPULSOR": "按住^3[{+activate}]^7购买^3排斥器^7。",
-  "ZOMBIE_DLC3_TELEPORT_GRENADE": "按住^3[{+activate}]^7购买^3传送榴弹^7。",
-  "ZOMBIE_DLC3_TELEPORT_GRENADE_AMMO": "按住^3[{+activate}]^7购买^31颗传送榴弹^7。",
+  "ZOMBIE_DLC3_REPULSOR": "按住^3[{+activate}]^7购买^3排斥器^7",
+  "ZOMBIE_DLC3_TELEPORT_GRENADE": "按住^3[{+activate}]^7购买^3传送榴弹^7",
+  "ZOMBIE_DLC3_TELEPORT_GRENADE_AMMO": "按住^3[{+activate}]^7购买^31颗传送榴弹^7",
   "ZOMBIE_H2O_AMMO_CRATE": "按住^3[{+activate}]^7获得最大弹药",
   "ZOMBIE_H2O_CHALLENGE": "准备迎接……",
   "ZOMBIE_H2O_CHALLENGE_DRONES": "无人机挑战",
@@ -57,7 +57,7 @@
   "ZOMBIE_SQUADMATE_SENTINEL": "哨兵",
   "ZOMBIE_SQUADMATE_SQUADMATE": "长按^3[{+activate}]^7召唤^3哨兵增援^7",
   "ZOMBIE_SQUADMATE_SQUADMATE_REQUEST": "已请求哨兵增援",
-  "ZOMBIE_WEAPONDLC2_GUN": "按住^3[{+activate}]^7购买^3OHM^7。",
-  "ZOMBIE_WEAPONDLC3_GUN": "按住^3[{+activate}]^7购买^3M1艾恩斯^7。",
-  "ZOMBIE_WEAPONDLC4_GUN": "按住^3[{+activate}]^7购买^3雷铳^7。"
+  "ZOMBIE_WEAPONDLC2_GUN": "按住^3[{+activate}]^7购买^3OHM^7",
+  "ZOMBIE_WEAPONDLC3_GUN": "按住^3[{+activate}]^7购买^3M1艾恩斯^7",
+  "ZOMBIE_WEAPONDLC4_GUN": "按住^3[{+activate}]^7购买^3雷铳^7"
 }
