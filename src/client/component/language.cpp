@@ -616,6 +616,8 @@ namespace language
 
 				g_last_fastfile_time = std::chrono::steady_clock::now();
 				patch_localize_assets();
+				patch_all_localize_assets_via_find();
+				patch_subtitle_csv();
 
 				// SV_Loaded() monitoring is handled by the
 				// continuous loop in on_game_initialized.
