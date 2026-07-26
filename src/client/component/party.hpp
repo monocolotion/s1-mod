@@ -5,6 +5,8 @@ namespace party
 	void reset_connect_state();
 
 	void connect(const game::netadr_s& target);
+	void connect_lan(const game::netadr_s& target, const std::string& mapname, const std::string& gametype);
+	void connect_to_party(const game::netadr_s& target, const std::string& mapname, const std::string& gametype);
 
 	void clear_sv_motd();
 	int server_client_count();

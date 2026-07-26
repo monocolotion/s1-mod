@@ -11403,6 +11403,7 @@
 		"PLATFORM_SYSTEM_LINK_CAPS": "局域网派对",
 		"PLATFORM_SYSTEM_LINK_DESC": "私人 matches over local network.",
 		"PLATFORM_SYSTEM_LINK_TITLE": "LAN PARTY",
+		"PLATFORM_LAN_LIST_TITLE": "LAN LIST",
 		"PLATFORM_TEXTURE_QUALITY_DESCRIPTION": "If set to Automatic, game will choose appropriate texture resolutions for your hardware",
 		"PLATFORM_TEXTURE_RESOLUTION_DESCRIPTION": "Higher resolution results in more color detail in surfaces",
 		"PLATFORM_THEATER_RECORDING": "Theater Recording",
@@ -22662,6 +22663,8 @@
 		"LUA_MENU_LATENCY_DESC": "显示服务器延迟",
 		"LUA_MENU_SERVERLIST": "局域网联机",
 		"LUA_MENU_SERVERLIST_DESC": "浏览可用服务器。",
+		"LUA_MENU_LANLIST": "局域网列表",
+		"LUA_MENU_LANLIST_DESC": "浏览局域网服务器。",
 		"LUA_MENU_COMBAT": "战斗训练",
 		"LUA_MENU_COMBAT_DESC": "与机器人离线升级。"
 	}

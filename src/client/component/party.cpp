@@ -68,46 +68,6 @@ namespace party
 			command::execute("startentitlements", true);
 		}
 
-		void connect_to_party(const game::netadr_s& target, const std::string& mapname, const std::string& gametype)
-		{
-			if (game::environment::is_sp())
-			{
-				return;
-			}
-
-			if (game::Live_SyncOnlineDataFlags(0) != 0)
-			{
-				// initialize the game after onlinedataflags is 32 (workaround)
-				if (game::Live_SyncOnlineDataFlags(0) == 32)
-				{
-					scheduler::once([=]()
-					{
-						command::execute("xstartprivateparty", true);
-						command::execute("disconnect", true); // 32 -> 0
-
-						connect_to_party(target, mapname, gametype);
-					}, scheduler::pipeline::main, 1s);
-					return;
-				}
-				else
-				{
-					scheduler::once([=]()
-					{
-						connect_to_party(target, mapname, gametype);
-					}, scheduler::pipeline::main, 1s);
-					return;
-				}
-			}
-
-			perform_game_initialization();
-
-			// exit from virtuallobby
-			reinterpret_cast<void(*)()>(0x14020EB90)();
-
-			// CL_ConnectFromParty
-			char session_info[0x100] = {};
-			reinterpret_cast<void(*)(int, char*, const game::netadr_s*, const char*, const char*)>(0x140209360)(0, session_info, &target, mapname.data(), gametype.data());
-		}
 
 		void didyouknow_stub(const char* dvar_name, const char* string)
 		{
@@ -148,6 +108,46 @@ namespace party
 			a.mov(ecx, 2);
 			a.jmp(0x140209DD9);
 		});
+	}
+	void connect_to_party(const game::netadr_s& target, const std::string& mapname, const std::string& gametype)
+	{
+		if (game::environment::is_sp())
+		{
+			return;
+		}
+
+		if (game::Live_SyncOnlineDataFlags(0) != 0)
+		{
+			// initialize the game after onlinedataflags is 32 (workaround)
+			if (game::Live_SyncOnlineDataFlags(0) == 32)
+			{
+				scheduler::once([=]()
+				{
+					command::execute("xstartprivateparty", true);
+					command::execute("disconnect", true); // 32 -> 0
+
+					connect_to_party(target, mapname, gametype);
+				}, scheduler::pipeline::main, 1s);
+				return;
+			}
+			else
+			{
+				scheduler::once([=]()
+				{
+					connect_to_party(target, mapname, gametype);
+				}, scheduler::pipeline::main, 1s);
+				return;
+			}
+		}
+
+		perform_game_initialization();
+
+		// exit from virtuallobby
+		reinterpret_cast<void(*)()>(0x14020EB90)();
+
+		// CL_ConnectFromParty
+		char session_info[0x100] = {};
+		reinterpret_cast<void(*)(int, char*, const game::netadr_s*, const char*, const char*)>(0x140209360)(0, session_info, &target, mapname.data(), gametype.data());
 	}
 
 	void clear_sv_motd()
@@ -228,6 +228,32 @@ namespace party
 
 		network::send(target, "getInfo", connect_state.challenge);
 	}
+
+		void connect_lan(const game::netadr_s& target, const std::string& mapname, const std::string& gametype)
+		{
+			if (game::environment::is_sp())
+			{
+				return;
+			}
+
+			if (mapname.empty() || gametype.empty())
+			{
+				console::error("connect_lan: invalid mapname or gametype\n");
+				return;
+			}
+
+			command::execute("lui_open_popup popup_acceptinginvite", false);
+
+			connect_state.host = target;
+			connect_state.hostDefined = true;
+
+			// Defer connection to let the game process initialization
+			scheduler::once([target, mapname, gametype]()
+			{
+				connect_to_party(target, mapname, gametype);
+			}, scheduler::pipeline::main, 200ms);
+		}
+
 
 	int server_client_count()
 	{
@@ -545,6 +571,20 @@ namespace party
 
 				network::send(target, "infoResponse", info.build(), '\n');
 			});
+			// LAN broadcast discovery: respond when a LAN client queries
+			network::on("getLANInfo", [](const game::netadr_s& target, const std::string& data)
+			{
+				const auto* sv_running = game::Dvar_FindVar("sv_running");
+				if (!sv_running || !sv_running->current.enabled)
+				{
+					return;
+				}
+
+				utils::info_string info = get_info();
+				info.set("challenge", data);
+
+				network::send(target, "lanInfoResponse", info.build(), '\n');
+			});
 
 			network::on("getStatus", [](const game::netadr_s& target, const std::string& data)
 			{
@@ -658,7 +698,8 @@ namespace party
 				}
 
 				// Only block when explicitly closed ("0"); a missing field stays joinable.
-				if (info.get("joinable") == "0")
+				// LAN (private IP) servers are always joinable - they don't need NAT open.
+				if (info.get("joinable") == "0" && !network::is_private_ip(target))
 				{
 					const auto* error_msg = "This match is not open to joining. Ask the host to open it from the pause menu.";
 					console::error("%s\n", error_msg);

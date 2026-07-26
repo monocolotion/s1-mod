@@ -4686,6 +4686,7 @@
   "PLATFORM_SYSTEM_LINK_CAPS": "[NEED_EN] 局域网派对",
   "PLATFORM_SYSTEM_LINK_DESC": "Private matches over a local network.",
   "PLATFORM_SYSTEM_LINK_TITLE": "LAN PARTY",
+  "PLATFORM_LAN_LIST_TITLE": "LAN LIST",
   "PLATFORM_TEXTURE_QUALITY_DESCRIPTION": "If set to Automatic, game will choose the appropriate texture resolutions for your hardware",
   "PLATFORM_TEXTURE_RESOLUTION_DESCRIPTION": "Higher resolution results in more color detail in surfaces",
   "PLATFORM_THEATER_RECORDING": "Theater Recording",

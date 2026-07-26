@@ -16,6 +16,8 @@
   "LUA_MENU_LATENCY_DESC": "[NEED_EN] 显示服务器延迟",
   "LUA_MENU_SERVERLIST": "LAN PARTY",
   "LUA_MENU_SERVERLIST_DESC": "[NEED_EN] 浏览可用服务器。",
+  "LUA_MENU_LANLIST": "LAN LIST",
+  "LUA_MENU_LANLIST_DESC": "Browse LAN servers.",
   "LUA_MENU_COMBAT": "[NEED_EN] 战斗训练",
   "LUA_MENU_COMBAT_DESC": "[NEED_EN] 与机器人离线升级。"
 }

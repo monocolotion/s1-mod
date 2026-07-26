@@ -1,12 +1,14 @@
 #pragma once
 #include <utils/info_string.hpp>
 
-namespace server_list
+namespace lan_server_list
 {
-	bool get_master_server(game::netadr_s& address);
+	void refresh();
 	void handle_info_response(const game::netadr_s& address, const utils::info_string& info);
 
+	bool is_menu_open();
+	int ui_feeder_count();
+	const char* ui_feeder_item_text(int index, int column);
+	void join_server(int index);
 	bool sl_key_event(int key, int down);
-
-	void set_lan_mode(bool lan);
 }

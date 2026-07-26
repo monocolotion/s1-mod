@@ -179,7 +179,16 @@ namespace ui_scripting
 			game_type["addlocalizedstring"] = [](const game&, const std::string& string,
 				const std::string& value)
 			{
+				// Register the key first (creates LocalizeEntry in the game's DB)
 				localized_strings::override(string, value);
+
+				// Then re-apply Chinese translation if one exists — Lua scripts
+				// load AFTER C++ apply_translations(), so we must restore Chinese.
+				const char* chinese = language::get_translation(string);
+				if (chinese)
+				{
+					localized_strings::override(string, chinese);
+				}
 			};
 
 			game_type["gettranslatedstring"] = [](const game&, const script_value& key) -> arguments

@@ -5,6 +5,8 @@ local MPLobbyUtils = LUI.mp_menus.MPLobbyUtils
 
 game:addlocalizedstring("LUA_MENU_SERVERLIST", "Server List")
 game:addlocalizedstring("LUA_MENU_SERVERLIST_DESC", "Browse available servers.");
+game:addlocalizedstring("LUA_MENU_LANLIST", "LAN List")
+game:addlocalizedstring("LUA_MENU_LANLIST_DESC", "Browse LAN servers.");
 
 LeaveXboxLive = function(f5_arg0)
 	local f73_local0 = Engine.GetFirstActiveController()
@@ -42,9 +44,17 @@ function menu_xboxlive(a1, a2)
 
 	-- server list button
 	local serverListButton = menu:AddButton("@LUA_MENU_SERVERLIST", function(a1, a2)
+		Engine.ExecNow("setLanMode 0")
 		LUI.FlowManager.RequestAddMenu(a1, "menu_systemlink_join", true, nil)
 	end)
 	serverListButton:setDisabledRefreshRate(500)
+
+	-- lan list button
+	local lanListButton = menu:AddButton("@LUA_MENU_LANLIST", function(a1, a2)
+		Engine.ExecNow("setLanMode 1")
+		LUI.FlowManager.RequestAddMenu(a1, "menu_systemlink_join", true, nil)
+	end)
+	lanListButton:setDisabledRefreshRate(500)
 
 	-- private match button
 	privateMatchButton = menu:AddButton("@MENU_PRIVATE_MATCH", MPLobbyOnline.OnPrivateMatch,

@@ -3,3 +3,4 @@ if (game:issingleplayer() or not Engine.InFrontend()) then
 end
 
 require("serverlist")
+require("lanlist")

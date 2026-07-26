@@ -5,6 +5,7 @@ end
 local SystemLinkJoinMenu = LUI.mp_menus.SystemLinkJoinMenu
 
 game:addlocalizedstring("PLATFORM_SYSTEM_LINK_TITLE", "SERVER LIST")
+game:addlocalizedstring("PLATFORM_LAN_LIST_TITLE", "LAN LIST")
 game:addlocalizedstring("MENU_NUMPLAYERS", "Players")
 game:addlocalizedstring("MENU_PING", "Ping")
 
@@ -37,8 +38,10 @@ SystemLinkJoinMenu.AddServerButton = function(menu, controller, index)
 end
 
 function menu_systemlink_join(f19_arg0, f19_arg1)
+	local isLan = Engine.GetDvarBool("ui_lanServerList") or false
+	local title = isLan and "@PLATFORM_LAN_LIST_TITLE" or "@PLATFORM_SYSTEM_LINK_TITLE"
 	local menu = LUI.MenuTemplate.new(f19_arg0, {
-		menu_title = "@PLATFORM_SYSTEM_LINK_TITLE",
+		menu_title = title,
 		menu_width = CoD.DesignGridHelper(28)
 	})
 	Lobby.BuildServerList(Engine.GetFirstActiveController())

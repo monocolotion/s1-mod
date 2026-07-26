@@ -16,6 +16,8 @@
   "LUA_MENU_LATENCY_DESC": "显示服务器延迟",
   "LUA_MENU_SERVERLIST": "服务器列表",
   "LUA_MENU_SERVERLIST_DESC": "浏览可用服务器。",
+  "LUA_MENU_LANLIST": "局域网列表",
+  "LUA_MENU_LANLIST_DESC": "浏览局域网服务器。",
   "LUA_MENU_COMBAT": "战斗训练",
   "LUA_MENU_COMBAT_DESC": "与机器人离线升级。"
 }

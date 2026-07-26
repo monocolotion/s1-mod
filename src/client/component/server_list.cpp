@@ -4,10 +4,12 @@
 #include "game/dvars.hpp"
 
 #include "server_list.hpp"
+#include "lan_server_list.hpp"
 #include "localized_strings.hpp"
 #include "network.hpp"
 #include "scheduler.hpp"
 #include "party.hpp"
+#include "command.hpp"
 
 #include <utils/cryptography.hpp>
 #include <utils/string.hpp>
@@ -51,6 +53,8 @@ namespace server_list
 		volatile bool update_server_list = false;
 		std::chrono::high_resolution_clock::time_point last_scroll{};
 
+		bool lan_mode = false;
+
 		size_t get_page_count()
 		{
 			const auto count = servers.size() / server_limit;
@@ -64,6 +68,12 @@ namespace server_list
 
 		void refresh_server_list()
 		{
+			if (lan_mode)
+			{
+				lan_server_list::refresh();
+				return;
+			}
+
 			{
 				std::lock_guard<std::mutex> _(mutex);
 				servers.clear();
@@ -82,6 +92,12 @@ namespace server_list
 
 		void join_server(int, int, const int index)
 		{
+			if (lan_mode)
+			{
+				lan_server_list::join_server(index);
+				return;
+			}
+
 			std::lock_guard<std::mutex> _(mutex);
 
 			const auto i = static_cast<size_t>(index) + get_page_base_index();
@@ -107,6 +123,11 @@ namespace server_list
 
 		int ui_feeder_count()
 		{
+			if (lan_mode)
+			{
+				return lan_server_list::ui_feeder_count();
+			}
+
 			std::lock_guard<std::mutex> _(mutex);
 			if (update_server_list)
 			{
@@ -122,6 +143,11 @@ namespace server_list
 		const char* ui_feeder_item_text(int /*localClientNum*/, void* /*a2*/, void* /*a3*/, const int index,
 		                                const int column)
 		{
+			if (lan_mode)
+			{
+				return lan_server_list::ui_feeder_item_text(index, column);
+			}
+
 			std::lock_guard<std::mutex> _(mutex);
 
 			const auto i = get_page_base_index() + index;
@@ -291,6 +317,11 @@ namespace server_list
 
 	bool sl_key_event(const int key, const int down)
 	{
+		if (lan_mode)
+		{
+			return lan_server_list::sl_key_event(key, down);
+		}
+
 		if (down)
 		{
 			if (key == game::keyNum_t::K_MWHEELUP)
@@ -305,6 +336,10 @@ namespace server_list
 		}
 
 		return true;
+	}
+	void set_lan_mode(const bool lan)
+	{
+		lan_mode = lan;
 	}
 
 	bool get_master_server(game::netadr_s& address)
@@ -336,7 +371,16 @@ namespace server_list
 		}
 
 		// Only handle servers of the same playmode!
-		const auto playmode = static_cast<game::CodPlayMode>(std::atoi(info.get("playmode").data()));
+		const auto playmode_str = info.get("playmode");
+		if (playmode_str.empty())
+		{
+			return; // reject servers without a playmode field
+		}
+		const auto playmode = static_cast<game::CodPlayMode>(std::atoi(playmode_str.data()));
+		if (playmode == game::CODPLAYMODE_NONE)
+		{
+			return; // reject uninitialized playmode
+		}
 		if (game::Com_GetCurrentCoDPlayMode() != playmode)
 		{
 			return;
@@ -388,6 +432,8 @@ namespace server_list
 					// add dvars to change destination master server ip/port
 					dvars::master_server_ip = game::Dvar_RegisterString("masterServerIP", DEFAULT_MASTER_SERVER_IP, game::DVAR_FLAG_NONE);
 					dvars::master_server_port = game::Dvar_RegisterString("masterServerPort", DEFAULT_MASTER_SERVER_PORT, game::DVAR_FLAG_NONE);
+					// Dvar for Lua to check if LAN server list is active
+					game::Dvar_RegisterBool("ui_lanServerList", false, game::DVAR_FLAG_NONE);
 				}, scheduler::pipeline::main);
 			}
 
@@ -403,6 +449,17 @@ namespace server_list
 			utils::hook::call(0x1400F5D35, &ui_feeder_item_text);
 
 			scheduler::loop(do_frame_work, scheduler::pipeline::main);
+
+			// Console command to switch between LAN and Internet server list modes
+			command::add("setLanMode", [](const command::params& params)
+			{
+				if (params.size() > 1)
+				{
+					lan_mode = params.get(1) == "1"s;
+					server_list_page = 0;
+					game::Dvar_SetBool(game::Dvar_FindVar("ui_lanServerList"), lan_mode);
+				}
+			});
 
 			network::on("getServersResponse", [](const game::netadr_s& target, const std::string_view& data)
 			{
