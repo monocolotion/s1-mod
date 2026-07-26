@@ -582,6 +582,8 @@ namespace party
 
 				utils::info_string info = get_info();
 				info.set("challenge", data);
+				// Include process ID so clients can filter out self-responses
+				info.set("lan_sid", std::to_string(GetCurrentProcessId()));
 
 				network::send(target, "lanInfoResponse", info.build(), '\n');
 			});

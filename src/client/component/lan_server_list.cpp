@@ -15,39 +15,9 @@ namespace lan_server_list
 {
 	namespace
 	{
-		// Cached local IP for self-filtering (prevents own listen server
-		// from appearing in the LAN list).
-		std::string local_ip;
-
-		std::string get_local_ip()
-		{
-			const SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
-			if (sock == INVALID_SOCKET)
-			{
-				return {};
-			}
-
-			sockaddr_in target{};
-			target.sin_family = AF_INET;
-			target.sin_port = htons(53);
-			inet_pton(AF_INET, "8.8.8.8", &target.sin_addr);
-
-			std::string ip;
-			if (connect(sock, reinterpret_cast<sockaddr*>(&target), sizeof(target)) == 0)
-			{
-				sockaddr_in local{};
-				int length = sizeof(local);
-				if (getsockname(sock, reinterpret_cast<sockaddr*>(&local), &length) == 0)
-				{
-					char buffer[INET_ADDRSTRLEN]{};
-					inet_ntop(AF_INET, &local.sin_addr, buffer, sizeof(buffer));
-					ip = buffer;
-				}
-			}
-
-			closesocket(sock);
-			return ip;
-		}
+		// Process ID for self-detection. LAN servers include their PID
+		// as "lan_sid" in the response. If it matches ours, skip.
+		std::string my_pid;
 
 		const int server_limit = 14;
 
@@ -287,14 +257,18 @@ namespace lan_server_list
 		resize_host_name(server.host_name);
 
 
-		// Filter out our own listen server (same machine)
-		if (!local_ip.empty())
+		// Filter out our own listen server (same machine).
+		if (address.type == game::NA_LOOPBACK)
 		{
-			const auto* addr_str = network::net_adr_to_string(address);
-			if (addr_str && strstr(addr_str, local_ip.c_str()) == addr_str)
-			{
-				return; // skip self
-			}
+			return;
+		}
+
+		// Self-detection: LAN servers include their process ID as "lan_sid".
+		// If it matches our PID, the response is from our own listen server.
+		const auto lan_sid = info.get("lan_sid");
+		if (!lan_sid.empty() && lan_sid == my_pid)
+		{
+			return;
 		}
 
 		insert_server(std::move(server));
@@ -422,8 +396,8 @@ namespace lan_server_list
 				return;
 			}
 
-			local_ip = get_local_ip();
-			console::info("lan_server_list: local IP = %s\n", local_ip.c_str());
+			my_pid = std::to_string(GetCurrentProcessId());
+			console::info("lan_server_list: my_pid = %s\n", my_pid.c_str());
 
 
 			// Handle LAN discovery responses
