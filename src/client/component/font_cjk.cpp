@@ -510,6 +510,7 @@ namespace font_cjk
 		void try_early_cjk_init(game::GfxImage* image)
 		{
 			if (ready) return;
+			if (language::get_language() != language::lang::schinese) return;
 			if (!image || !image->textures.___u0.map) return;
 
 			replace_font_atlas_texture(image, "gamefonts_pc");
@@ -525,6 +526,7 @@ namespace font_cjk
 		void init_after_game_load()
 		{
 			if (ready) return;
+			if (language::get_language() != language::lang::schinese) return;
 
 			create_cjk_atlas_texture();
 			if (!cjk_atlas_tex)
