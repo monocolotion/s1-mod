@@ -10,6 +10,9 @@
 #include "component/gsc/script_loading.hpp"
 
 #include <utils/io.hpp>
+#include <mutex>
+#include <fstream>
+#include <cstdarg>
 #include <utils/hook.hpp>
 #include "game/ui_scripting/execution.hpp"
 
@@ -177,7 +180,42 @@ namespace language
 				}
 			}
 
-			// Source 2: sl_reverse.json
+			// Source 2: auto-generate reverse mappings from English
+			// reference files (data/translations_en/*.json).
+			// Each English file has KEY -> English_text, and the
+			// Chinese file in data/translations/ has KEY -> Chinese.
+			// By matching keys, we build English_text -> Chinese
+			// automatically — no manually-maintained sl_reverse.json
+			// needed for subtitle/StringTable translation.
+			{
+				const auto en_files = utils::io::list_files("data/translations_en");
+				size_t en_rev_count = 0;
+				for (const auto& en_file : en_files)
+				{
+					if (!en_file.ends_with(".json")) continue;
+					std::string en_data;
+					if (!utils::io::read_file(en_file, &en_data)) continue;
+					rapidjson::Document en_doc;
+					if (en_doc.Parse(en_data).HasParseError() || !en_doc.IsObject()) continue;
+					for (auto it = en_doc.MemberBegin(); it != en_doc.MemberEnd(); ++it)
+					{
+						if (!it->value.IsString()) continue;
+						std::string key = it->name.GetString();
+						std::string en_val = it->value.GetString();
+						if (en_val.empty()) continue;
+						const auto cache_it = translations_cache.find(key);
+						if (cache_it == translations_cache.end()) continue;
+						if (new_map.contains(en_val)) continue;
+						new_stable.emplace_back(std::move(en_val));
+						new_stable.emplace_back(cache_it->second);
+						en_rev_count++;
+					}
+				}
+				console::info("language: Auto-generated %zu reverse mappings from translations_en\n",
+					en_rev_count);
+			}
+
+			// Source 3: sl_reverse.json (optional extra overrides)
 			std::string rev_data;
 			if (utils::io::read_file("data/sl_reverse.json", &rev_data))
 			{
@@ -323,15 +361,37 @@ namespace language
 
 			return patched;
 		}
+			// Patch ALL LocalizeEntry assets by iterating translations_cache
+			// and using DB_FindXAssetHeader per-key. This catches mission-
+			// specific keys that DB_EnumXAssets_FastFile may miss.
+			void patch_all_localize_assets_via_find()
+			{
+				if (current_language != lang::schinese) return;
+				const game::XAssetType type = game::ASSET_TYPE_LOCALIZE_ENTRY;
+				struct LocalizeEntry { const char* value; const char* name; };
+				static std::deque<std::string> stable;
+				size_t patched = 0;
+				for (const auto& [key, chinese] : translations_cache)
+				{
+					auto header = game::DB_FindXAssetHeader(type, key.c_str(), 0);
+					if (!header.data) continue;
+					auto* entry = (LocalizeEntry*)header.data;
+					if (!entry->value) continue;
+					if (strcmp(entry->value, chinese.c_str()) == 0) continue;
+					stable.push_back(chinese);
+					entry->value = stable.back().c_str();
+					patched++;
+				}
+				console::info("language: Patched %zu LocalizeEntry assets via DB_FindXAssetHeader\n", patched);
+			}
+
 	// Stable storage for patched subtitle strings
 	static std::deque<std::string> subtitle_stable_strings;
 
-	bool g_subtitle_patch_done = false;
 
 	void patch_subtitle_csv()
 	{
 		if (current_language != lang::schinese) return;
-		if (g_subtitle_patch_done) return;
 
 		game::DB_EnumXAssets_FastFile(game::ASSET_TYPE_STRINGTABLE,
 			[](game::XAssetHeader header, void*)
@@ -364,7 +424,6 @@ namespace language
 				patched++;
 			}
 			console::info("language: Patched %d/%d subtitle strings\n", patched, nrows);
-			g_subtitle_patch_done = true;
 		}, nullptr, true);
 	}
 		// DB_LoadXAssets hook: patches newly-loaded LocalizeEntry assets
@@ -571,6 +630,29 @@ namespace language
 
 	}
 
+	// Thread-safe file logger for diagnostic tracing.
+	// Writes to data/s1-mod.log in the game directory.
+	static std::mutex g_diag_mutex;
+	void diag_log(const char* fmt, ...)
+	{
+		std::lock_guard<std::mutex> lk(g_diag_mutex);
+		static std::ofstream s_file;
+		if (!s_file.is_open())
+		{
+			s_file.open("data/s1-mod.log", std::ios::app);
+		}
+		if (!s_file.is_open()) return;
+
+		char buf[1024];
+		va_list args;
+		va_start(args, fmt);
+		vsnprintf(buf, sizeof(buf), fmt, args);
+		va_end(args);
+
+		s_file << buf;
+		s_file.flush();
+	}
+
 	lang get_language()
 	{
 		return current_language;
@@ -682,7 +764,7 @@ namespace language
 				// Immediately patch all currently-loaded LocalizeEntry assets.
 				patch_localize_assets();
 				patch_subtitle_csv();
-				// Hook DB_LoadXAssets to patch assets after each fastfile load.
+				patch_all_localize_assets_via_find();
 				db_load_xassets_hook.create(
 					SELECT_VALUE(0x14017FB20, 0x140270F30), db_load_xassets_stub);
 				console::info("language: Hooked DB_LoadXAssets for immediate patching\n");

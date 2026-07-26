@@ -249,6 +249,8 @@ if os.getenv("CI") then
 end
 
 flags {"NoIncrementalLink", "NoMinimalRebuild", "MultiProcessorCompile", "No64BitChecks"}
+-- Suppress C4875: [[gsl::suppress]] non-string-literal argument is deprecated (GSL library compatibility with newer MSVC)
+	buildoptions {"/wd4875"}
 
 filter "platforms:x64"
 	defines {"_WINDOWS", "WIN32"}

@@ -117,27 +117,29 @@ namespace font_cjk
 		{
 			std::vector<int> cp;
 			for (int ic = 32; ic <= 126; ic++) cp.push_back(ic);
-			std::string json;
-			if (utils::io::read_file("data/translations.json", &json))
+			// Read from individual translation files (auto-generated)
+			const auto trans_files = utils::io::list_files("data/translations");
+			for (const auto& file : trans_files)
 			{
+				if (!file.ends_with(".json")) continue;
+				std::string json;
+				if (!utils::io::read_file(file, &json)) continue;
 				rapidjson::Document doc;
-				if (!doc.Parse(json).HasParseError() && doc.HasMember("schinese"))
+				if (doc.Parse(json).HasParseError() || !doc.IsObject()) continue;
+				for (auto it = doc.MemberBegin(); it != doc.MemberEnd(); ++it)
 				{
-					for (auto it = doc["schinese"].MemberBegin(); it != doc["schinese"].MemberEnd(); ++it)
+					if (!it->value.IsString()) continue;
+					const char* s = it->value.GetString();
+					while (*s)
 					{
-						if (!it->value.IsString()) continue;
-						const char* s = it->value.GetString();
-						while (*s)
-						{
-							unsigned char cval = static_cast<unsigned char>(*s);
-							int u;
-							if (cval < 0x80) { u = cval; s += 1; }
-							else if ((cval & 0xE0) == 0xC0) { u = (cval & 0x1F) << 6; u |= (static_cast<unsigned char>(s[1]) & 0x3F); s += 2; }
-							else if ((cval & 0xF0) == 0xE0) { u = (cval & 0x0F) << 12; u |= (static_cast<unsigned char>(s[1]) & 0x3F) << 6; u |= (static_cast<unsigned char>(s[2]) & 0x3F); s += 3; }
-							else if ((cval & 0xF8) == 0xF0) { u = (cval & 0x07) << 18; u |= (static_cast<unsigned char>(s[1]) & 0x3F) << 12; u |= (static_cast<unsigned char>(s[2]) & 0x3F) << 6; u |= (static_cast<unsigned char>(s[3]) & 0x3F); s += 4; }
-							else { s += 1; continue; }
-							if (u > 127 && u <= 0xFFFF) cp.push_back(u);
-						}
+						unsigned char cval = static_cast<unsigned char>(*s);
+						int u;
+						if (cval < 0x80) { u = cval; s += 1; }
+						else if ((cval & 0xE0) == 0xC0) { u = (cval & 0x1F) << 6; u |= (static_cast<unsigned char>(s[1]) & 0x3F); s += 2; }
+						else if ((cval & 0xF0) == 0xE0) { u = (cval & 0x0F) << 12; u |= (static_cast<unsigned char>(s[1]) & 0x3F) << 6; u |= (static_cast<unsigned char>(s[2]) & 0x3F); s += 3; }
+						else if ((cval & 0xF8) == 0xF0) { u = (cval & 0x07) << 18; u |= (static_cast<unsigned char>(s[1]) & 0x3F) << 12; u |= (static_cast<unsigned char>(s[2]) & 0x3F) << 6; u |= (static_cast<unsigned char>(s[3]) & 0x3F); s += 4; }
+						else { s += 1; continue; }
+						if (u > 127 && u <= 0xFFFF) cp.push_back(u);
 					}
 				}
 			}
@@ -569,7 +571,20 @@ namespace font_cjk
 				if (*(const unsigned char*)s >= 0x80) already_cjk = true;
 			if (!already_cjk)
 			{
-				const char* translated = language::get_translation_by_english(text);
+				// Diagnostic: track SEOUL QTE text through the pipeline
+				if (text && strstr(text, "Pull Lever"))
+				{
+					char pv[256]; int pl = 0;
+					for (const char* tp = text; *tp && pl < 250; ) pv[pl++] = *tp++;
+					pv[pl] = 0;
+					language::diag_log("font_cjk: R_AddCmdDrawText saw '%.250s'\n", pv);
+				}
+				// Skip single key-name tokens (no spaces) to avoid
+				// translating key bindings like "F" or "^3F^7" to
+				// unrelated words. CJK text is already caught by the
+				// already_cjk check above, and sentences always have spaces.
+				bool is_key_name = !strchr(text, ' ');
+				const char* translated = is_key_name ? nullptr : language::get_translation_by_english(text);
 				if (translated)
 				{
 					static thread_local std::string resolved_buf;
@@ -578,7 +593,7 @@ namespace font_cjk
 					if (rdr_log < 1)
 					{
 						rdr_log++;
-						console::info("font_cjk: R_AddCmdDrawText translate '%s' -> '%s'\n",
+						language::diag_log("font_cjk: R_AddCmdDrawText translate '%s' -> '%s'\n",
 							text, resolved_buf.c_str());
 					}
 					text = resolved_buf.c_str();
@@ -618,6 +633,27 @@ namespace font_cjk
 			}
 			inject_cjk_glyphs_into_font(font);
 
+			// Translate English text to Chinese at the render level.
+			// (Same logic as r_add_cmd_draw_text_stub.)
+			bool already_cjk = false;
+			for (const char* s = text; *s && !already_cjk; s++)
+				if (*(const unsigned char*)s >= 0x80) already_cjk = true;
+			if (!already_cjk)
+			{
+				// Diagnostic: track SEOUL QTE text through the pipeline
+				if (text && strstr(text, "Pull Lever"))
+				{
+					language::diag_log("font_cjk: R_AddCmdDrawTextWithCursor saw '%.250s'\n", text);
+				}
+				bool is_key_name = !strchr(text, ' ');
+				const char* translated = is_key_name ? nullptr : language::get_translation_by_english(text);
+				if (translated)
+				{
+					static thread_local std::string resolved_buf;
+					resolved_buf = resolve_key_placeholders(text, translated);
+					text = resolved_buf.c_str();
+				}
+			}
 
 			r_add_cmd_draw_text_with_cursor_hook.invoke<void>(text, max_chars, font,
 				x, y, x_scale, y_scale,

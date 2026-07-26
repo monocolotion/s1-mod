@@ -24,4 +24,10 @@ namespace language
 	// Diagnostic: true when a Bink video is actively playing frames
 	bool is_bink_playing();
 
+	// Diagnostic: write formatted string to data/s1-mod.log
+	void diag_log(const char* fmt, ...);
+
+	// For font_cjk codepoint collection — returns all Chinese values
+	const std::unordered_map<std::string, std::string>& get_translations_cache();
+
 }

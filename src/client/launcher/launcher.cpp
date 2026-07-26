@@ -75,15 +75,20 @@ void launcher::create_main_menu()
 		// UTF-8 byte sequences split into separate string literals
 		// because C++ \x greedily consumes all following hex digits.
 		replace(html, ">Singleplayer<",
-			">" "\xE5\x8D\x95" "\xE4\xBA\xBA" "\xE6\xB8\xB8" "\xE6\x88\x8F" "<");  // 单人游戏
+			">" "\xE6\x88\x98" "\xE5\xBD\xB9" "\xE5\x89\xA7" "\xE6\x83\x85" "<");  // 战役剧情
 		replace(html, ">Multiplayer<",
-			">" "\xE5\xA4\x9A" "\xE4\xBA\xBA" "\xE6\xB8\xB8" "\xE6\x88\x8F" "<");  // 多人游戏
+			">" "\xE5\xA4\x9A" "\xE4\xBA\xBA" "\xE6\xB8\xB8" "\xE6\x88\x8F" "<");  //游戏"
 		replace(html, ">Zombies<",
 			">" "\xE5\x83\xB5" "\xE5\xB0\xB8" "\xE6\xA8\xA1" "\xE5\xBC\x8F" "<");  // 僵尸模式
 		replace(html, ">Survival<",
 			">" "\xE7\x94\x9F" "\xE5\xAD\x98" "\xE6\xA8\xA1" "\xE5\xBC\x8F" "<");  // 生存模式
 		replace(html, ">Server<",
 			">" "\xE4\xB8\x93" "\xE7\x94\xA8" "\xE6\x9C\x8D" "\xE5\x8A\xA1" "\xE5\x99\xA8" "<");  // 专用服务器
+		// Nav link text (whitespace-matched, only in Chinese mode)
+		replace(html, "\n                            Survival\n",
+			"\n                            " "\xE7" "\x94" "\x9F" "\xE5" "\xAD" "\x98" "\xE5" "\x83" "\xB5" "\xE5" "\xB0" "\xB8" "\n");  // 生存僵尸
+		replace(html, "\n                            About\n",
+			"\n                            " "\xE5" "\x85" "\xB3" "\xE4" "\xBA" "\x8E" "\n");  // 关于
 		// Additional UI text
 		replace(html, ">No settings yet!<",
 			">" "\xE6\x9A\x82\xE6\x97\xA0\xE8\xAE\xBE\xE7\xBD\xAE" "<");  // 暂无设置
